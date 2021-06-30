@@ -1,0 +1,25 @@
+<aura:component description="ZK_ProductTile"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+                access="global">
+
+    <aura:attribute name="height" type="Integer" default="550"/>
+    <aura:attribute name="product" type="Product2"/>
+    <aura:attribute name="productId" type="Id" />
+
+<!--    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+
+    <div class="tile slds-col slds-size_1-of-5 slds-m-bottom_medium pointer"  onclick="{!c.onProductClick}">
+        <div style="position: relative; height: 500px;"  >
+            <div class="pointer bg-image slds-align_absolute-center" style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.product.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
+            <div class="lower-third">
+                <h1 class="slds-truncate">{!v.product.Name}</h1>
+<!--                                <h1 class="slds-truncate" onclick="{!c.onTileClick}">{!v.product.Name}</h1>-->
+                <h1>{!v.product.GearType__c}</h1>
+            </div>
+            <div class="tileInfo pointer">
+
+            </div>
+        </div>
+    </div>
+
+</aura:component>

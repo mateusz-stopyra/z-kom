@@ -1,0 +1,31 @@
+<aura:component description="ZK_ProductSearchResults" access="global" controller="ZK_ProductController"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction">
+
+    <aura:attribute name="searchQuery" type="String"/>
+    <aura:attribute name="searchResponse" type="Product2[]"/>
+
+    <aura:method name="updateSearchQuery" action="{!c.doSearch}">
+        <aura:attribute name="searchQuery" type="String"/>
+    </aura:method>
+
+    <aura:if isTrue="{!v.searchResponse != null}">
+        <div class="slds-p-around_small">
+            <aura:if isTrue="{!v.searchResponse.length != 0}">
+                <h1>Results: {!v.searchResponse.length}  </h1>
+                <br></br>
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <aura:iteration items="{!v.searchResponse}" var="result">
+                            <c:ZK_ProductTile product="{!result}"/>
+                    </aura:iteration>
+                </div>
+            </aura:if>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.searchResponse.length == 0}">
+        <ui:message title="No results found" severity="error" closable="false">
+            Sorry. No results found for provided criteria. Please try again by typing different words.
+        </ui:message>
+    </aura:if>
+
+
+</aura:component>

@@ -1,0 +1,14 @@
+<aura:component description="ZK_ProductPanel" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome">
+
+    <ltng:require styles="{!$Resource.NoHeader}" />
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <aura:handler name="newProduct" event="c:ZK_NewProduct" action="{!c.onNewProduct}"/>
+
+    <c:ZK_ProductNavigationBar />
+    <c:ZK_ProductList />
+
+
+
+</aura:component>

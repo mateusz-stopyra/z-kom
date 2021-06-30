@@ -1,0 +1,72 @@
+<aura:component description="ZK_ProductInfo">
+
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="product" type="Product2"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:registerEvent name="productSaved" type="c:ZK_ProductSaved"/>
+
+    <aura:method name="save" action="{!c.doSaveRecord}">
+    </aura:method>
+
+    <force:recordData aura:id="recordEditor"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetFields="{!v.simpleRecord}"
+                      targetRecord="{!v.record}"
+                      mode="EDIT"
+                      fields="Name,IsActive,ProductCode,DescriptionCustom__c,Manufacturer__c,Model__c,GearType__c" />
+
+    <lightning:layoutItem size="6" class="slds-p-around_small">
+        <lightning:input label="Name of the Product"
+                         name="name"
+                         value="{!v.simpleRecord.Name}"
+                         required="true"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem size="6" class="slds-p-around_small">
+        <lightning:input label="Active"
+                         name="active"
+                         type="checkbox"
+                         checked="true"
+                         value="{!v.simpleRecord.isActive}"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem size="6" class="slds-p-around_small">
+        <lightning:input label="Product Code"
+                         name="productCode"
+                         required="true"
+                         value="{!v.simpleRecord.ProductCode}"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem size="6" class="slds-p-around_small">
+        <lightning:input label="Manufacturer"
+                         name="manufacturer"
+                         required="true"
+                         value="{!v.simpleRecord.Manufacturer__c}"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem size="6" class="slds-p-around_small">
+        <lightning:input label="Model"
+                         name="model"
+                         required="true"
+                         value="{!v.simpleRecord.Model__c}"/>
+    </lightning:layoutItem>
+    <lightning:layoutItem size="6" class="slds-p-around_small">
+        <lightning:select aura:id="gearType" label="Gear Type" name="gearType" value="{!v.simpleRecord.GearType__c}" >
+            <option value="Mouse">Mouse</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Headset">Headset</option>
+            <option value="PC">PC</option>
+            <option value="Laptop">Laptop</option>
+        </lightning:select>
+    </lightning:layoutItem>
+    <lightning:layoutItem size="12" class="slds-p-around_small">
+        <lightning:inputRichText value="{!v.simpleRecord.DescriptionCustom__c}" label="Description" />
+    </lightning:layoutItem>
+
+
+
+
+
+</aura:component>
