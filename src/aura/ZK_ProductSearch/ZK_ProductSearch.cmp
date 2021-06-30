@@ -4,6 +4,7 @@
     <ltng:require styles="{!$Resource.NoHeader}" />
 
     <aura:handler name="formSubmit" event="c:ZK_FormSubmit" action="{!c.onFormSubmit}"/>
+    <aura:handler name="gearSelect" event="c:ZK_GearSelect" action="{!c.onGearSubmit}"/>
 
     <div class="FindMovie">
         <lightning:card title="Search for Electronic Gear">

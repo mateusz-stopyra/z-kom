@@ -4,6 +4,7 @@
     <aura:attribute name="searchQuery" type="String"/>
 
     <aura:registerEvent name="formSubmit" type="c:ZK_FormSubmit"/>
+    <aura:registerEvent name="gearSelect" type="c:ZK_GearSelect"/>
 
     <lightning:layout horizontalAlign="center" verticalAlign="end">
         <lightning:layoutItem padding="around-small" size="3">
@@ -16,6 +17,23 @@
         </lightning:layoutItem>
         <lightning:layoutItem padding="around-small">
             <lightning:button variant="brand" label="Search" onclick="{!c.onFormSubmit}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <lightning:layout horizontalAlign="center" verticalAlign="end">
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Laptop" class="slds-size_full"  variant="neutral" label="Laptop" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="PC" class="slds-size_full" variant="neutral" label="PC" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Headset" class="slds-size_full" variant="neutral" label="Headset" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Keyboard" class="slds-size_full" variant="neutral" label="Keyboard" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Mouse" class="slds-size_full" variant="neutral" label="Mouse" onclick="{!c.onGearTypeSubmit}"/>
         </lightning:layoutItem>
     </lightning:layout>
 

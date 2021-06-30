@@ -71,5 +71,21 @@ public with sharing class ZK_ProductController {
         return productDataList;
     }
 
+    @AuraEnabled
+    public static List<Product2> getGearTypeSearchResults(String searchQuery){
+        List<String> searchResultsList = new List<String>();
+        String searchQueryString = 'SELECT Id, Name, DescriptionCustom__c, Display_Image__c, Manufacturer__c, Model__c, Family, ProductCode, IsActive, GearType__c from Product2';
+        if(String.isNotBlank(searchQuery)){
+            searchQuery = String.escapeSingleQuotes(searchQuery).trim();
+            searchResultsList.add('GearType__c LIKE \'' + searchQuery + '%\'');
+        }
+        if (searchResultsList.size() > 0) {
+            searchQueryString += ' WHERE ' + searchResultsList;
+        }
+        List<Product2> products = Database.query(searchQueryString);
+        System.debug(products);
+        return products;
+    }
+
 
 }

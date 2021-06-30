@@ -3,9 +3,13 @@
 
     <aura:attribute name="searchQuery" type="String"/>
     <aura:attribute name="searchResponse" type="Product2[]"/>
+    <aura:attribute name="gearSelect" type="String"/>
 
     <aura:method name="updateSearchQuery" action="{!c.doSearch}">
         <aura:attribute name="searchQuery" type="String"/>
+    </aura:method>
+    <aura:method name="updateGearSelect" action="{!c.doGearSelect}">
+        <aura:attribute name="gearSelect" type="String"/>
     </aura:method>
 
     <aura:if isTrue="{!v.searchResponse != null}">

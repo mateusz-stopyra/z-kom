@@ -23,11 +23,8 @@
     },
 
     selectDisplayImage : function (component, event, helper) {
-        alert('wybrnao');
         const imageId = event.target.id;
         const productId = component.get('v.productId');
-        alert('image' + imageId);
-        alert('product' + productId);
         const action = component.get("c.updateDisplayImage");
         action.setParams({
             productId : productId,
@@ -36,11 +33,8 @@
 
         action.setCallback(this, function(response){
             var state = response.getState();
-            alert(response.getState());
             if (state === "SUCCESS") {
                 component.set("v.selectedImage", imageId);
-                alert(imageId);
-                alert(component.get('v.selectedImage'));
             }
         });
         $A.enqueueAction(action);

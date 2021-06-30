@@ -9,7 +9,7 @@
 <!--    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
 
     <div class="tile slds-col slds-size_1-of-5 slds-m-bottom_medium pointer"  onclick="{!c.onProductClick}">
-        <div style="position: relative; height: 500px;"  >
+        <div style="position: relative; height: 500px;" class="slds-box_border" >
             <div class="pointer bg-image slds-align_absolute-center" style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.product.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
             <div class="lower-third">
                 <h1 class="slds-truncate">{!v.product.Name}</h1>
