@@ -47,7 +47,7 @@ public with sharing class ZK_ProductController {
     @AuraEnabled
     public static List<Product2> getSearchResults(String searchQuery){
         List<String> searchResultsList = new List<String>();
-        String searchQueryString = 'SELECT Id, Name, DescriptionCustom__c, Display_Image__c, Manufacturer__c, Model__c, Family, ProductCode, IsActive, GearType__c from Product2';
+        String searchQueryString = 'SELECT Id, Name, DescriptionCustom__c, Display_Image__c, Manufacturer__c, Model__c, Family, ProductCode, IsActive, GearType__c,(SELECT UnitPrice from PricebookEntries where Pricebook2.IsStandard=true) from Product2';
         if(String.isNotBlank(searchQuery)){
             searchQuery = String.escapeSingleQuotes(searchQuery).trim();
             searchResultsList.add('Name LIKE \'' + searchQuery + '%\'');
@@ -74,7 +74,7 @@ public with sharing class ZK_ProductController {
     @AuraEnabled
     public static List<Product2> getGearTypeSearchResults(String searchQuery){
         List<String> searchResultsList = new List<String>();
-        String searchQueryString = 'SELECT Id, Name, DescriptionCustom__c, Display_Image__c, Manufacturer__c, Model__c, Family, ProductCode, IsActive, GearType__c from Product2';
+        String searchQueryString = 'SELECT Id, Name, DescriptionCustom__c, Display_Image__c, Manufacturer__c, Model__c, Family, ProductCode, IsActive, GearType__c,(SELECT UnitPrice from PricebookEntries where Pricebook2.IsStandard=true) from Product2';
         if(String.isNotBlank(searchQuery)){
             searchQuery = String.escapeSingleQuotes(searchQuery).trim();
             searchResultsList.add('GearType__c LIKE \'' + searchQuery + '%\'');

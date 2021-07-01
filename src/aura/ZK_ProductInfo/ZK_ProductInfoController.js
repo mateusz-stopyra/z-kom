@@ -6,6 +6,10 @@
 
     doSaveRecord : function (component, event, helper) {
         helper.saveRecord(component);
+    },
+
+    doCheck : function  (component, event, helper) {
+        console.log(JSON.stringify(event.detail));
     }
 
 })

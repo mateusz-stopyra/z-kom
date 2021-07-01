@@ -17,7 +17,6 @@
                       recordId="{!v.recordId}"
                       targetError="{!v.recordError}"
                       targetFields="{!v.simpleRecord}"
-                      targetRecord="{!v.record}"
                       mode="EDIT"
                       fields="Name,IsActive,ProductCode,DescriptionCustom__c,Manufacturer__c,Model__c,GearType__c" />
 
@@ -29,10 +28,9 @@
     </lightning:layoutItem>
     <lightning:layoutItem size="6" class="slds-p-around_small">
         <lightning:input label="Active"
-                         name="active"
+                         name="IsActive"
                          type="checkbox"
-                         checked="true"
-                         value="{!v.simpleRecord.isActive}"/>
+                         checked="{!v.simpleRecord.IsActive}" onchange="{!c.doCheck}"/>
     </lightning:layoutItem>
     <lightning:layoutItem size="6" class="slds-p-around_small">
         <lightning:input label="Product Code"

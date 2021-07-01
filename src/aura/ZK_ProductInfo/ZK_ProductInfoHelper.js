@@ -22,6 +22,8 @@
 
     saveRecord : function (component) {
         component.set('v.simpleRecord.Id', component.get('v.recordId'));
+        console.log(JSON.stringify((component.get('v.simpleRecord'))));
+        console.log(JSON.stringify(component.get('v.product')));
         component.find('recordEditor').saveRecord(function (saveResult) {
             if (saveResult.state === 'SUCCESS' || saveResult.state === 'DRAFT'){
                 const id = saveResult.recordId;
