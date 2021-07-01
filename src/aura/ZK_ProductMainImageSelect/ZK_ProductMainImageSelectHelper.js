@@ -1,5 +1,5 @@
 ({
-    onLoadImages : function (component, action, id) {
+    onLoadImageSelect : function (component, action, id) {
         action.setParams({
             productId : id,
         });
@@ -9,19 +9,29 @@
             if (state === "SUCCESS") {
                 const returnVal = response.getReturnValue();
                 const images = component.get('v.images');
-                component.set('v.currentImage',returnVal.product.Display_Image__c);
-                images.push(returnVal.product.Display_Image__c);
                 returnVal.images.forEach(image =>{
-                    if(image.ContentDocumentId === returnVal.product.Display_Image__c){
-                        return;
-                    }
                     images.push(image.ContentDocumentId);
                 });
                 component.set('v.images',images);
             }
         });
         $A.enqueueAction(action);
+    },
 
+    onSelectDisplay : function (component,imageId,productId,action) {
+        action.setParams({
+            productId : productId,
+            imageId : imageId
+        });
+
+        action.setCallback(this, function(response){
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                component.set("v.selectedImage", imageId);
+            }
+        });
+        $A.enqueueAction(action);
     }
+
 
 })

@@ -6,18 +6,15 @@
     <aura:attribute name="product" type="Product2"/>
     <aura:attribute name="productId" type="Id" />
 
-<!--    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
 
     <div class="tile slds-col slds-size_1-of-5 slds-m-bottom_medium pointer"  onclick="{!c.onProductClick}">
         <div style="position: relative; height: 500px;" class="slds-box_border" >
             <div class="pointer bg-image slds-align_absolute-center" style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.product.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
             <div class="lower-third sld">
                 <h1 class="slds-truncate slds-align_absolute-center">{!v.product.Manufacturer__c}</h1>
-<!--                                <h1 class="slds-truncate" onclick="{!c.onTileClick}">{!v.product.Name}</h1>-->
                 <h1 class="slds-align_absolute-center">{!v.product.Model__c}</h1>
             </div>
             <div class="tileInfo pointer slds-text-align_center slds-text-heading_large ">
-<!--                {!v.product.Model__c}<br></br>-->
                 <p class="slds-m-top_medium"> €<lightning:formattedNumber value="{!v.product.PricebookEntries[0].UnitPrice}" style="decimal" minimumFractionDigits="2" /></p>
             </div>
         </div>
