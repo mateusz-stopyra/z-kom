@@ -38,10 +38,11 @@
                 break;
             case 'delete':
                 const productName = event.getParam('row').Name;
-                helper.deleteProduct(component, productId, productName);
+                helper.showDeleteModal(component,productId,productName);
                 break;
         }
     },
+
 
 
 

@@ -87,5 +87,14 @@ public with sharing class ZK_ProductController {
         return products;
     }
 
+    @AuraEnabled
+    public static Boolean deleteImg(Id id){
+        return Database.delete(id).success;
+    }
+
+    @AuraEnabled
+    public static Boolean deleteProduct(Id id){
+        return Database.delete(id).success;
+    }
 
 }

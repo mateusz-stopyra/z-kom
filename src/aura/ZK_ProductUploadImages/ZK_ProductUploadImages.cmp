@@ -17,10 +17,12 @@
         <aura:if isTrue="{!not(empty(v.images))}">
             <div class="slds-grid slds-wrap slds-gutters slds-p-around_small slds-m-top_medium">
                 <aura:iteration items="{!v.images}" var="image">
-                    <div class="slds-col">
-                        <lightning:icon iconName="utility:delete"
-                                        size="x-small"
-                                        class="slds-m-bottom_small pointer"/>
+                    <div class="slds-col" >
+                        <div id="{!image}" onclick="{!c.deleteImage}">
+                            <lightning:buttonIcon iconName="utility:delete"
+                                                  size="x-small"
+                                                  class="slds-m-bottom_small pointer"/>
+                        </div>
                         <lightning:fileCard fileId="{!image}"/>
                     </div>
                 </aura:iteration>

@@ -1,4 +1,4 @@
-<aura:component description="ZK_ProductImages" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" controller="ZK_ProductController">
+<aura:component description="ZK_ProductImages" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes" controller="ZK_ProductController">
 
     <aura:attribute name="images" type="String[]"/>
     <aura:attribute name="currentImage" type="String"/>

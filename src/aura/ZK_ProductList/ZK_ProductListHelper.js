@@ -24,13 +24,25 @@
         e.fire();
     },
 
-    deleteProduct : function (component, productId, productName) {
-        const e = component.getEvent('deleteProduct');
-        e.setParams({
-            productId : productId,
-            productName : productName
+
+    showDeleteModal : function(component, productId, productName) {
+        const overlay = component.find('overlayLib');
+        $A.createComponent('c:ZK_ProductDeleteModal', {
+            productId: productId,
+            productName: productName
+        }, function(component, status) {
+            if (status === 'SUCCESS') {
+                const modalBody = component;
+                overlay.showCustomModal({
+                    header: 'Delete Product Confirmation',
+                    body: modalBody,
+                    showCloseButton: true,
+                    cssClass: 'slds-modal_medium',
+                    closeCallback: function() {}
+                });
+
+            }
         });
-        e.fire();
     }
 
   })

@@ -1,9 +1,12 @@
 ({
     handleProductClick : function (component, productId) {
-        var viewRecordEvent = $A.get("e.force:navigateToURL");
-        viewRecordEvent.setParams({
-            "url": "/" + productId
+        const id = component.get('v.product').Id;
+
+        const navEvt = $A.get("e.force:navigateToSObject");
+        navEvt.setParams({
+            'recordId': id,
+            'slideDevName': 'related'
         });
-        viewRecordEvent.fire();
+        navEvt.fire();
     }
 })
