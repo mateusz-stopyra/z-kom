@@ -21,37 +21,39 @@
                       fields="Name,IsActive,ProductCode,DescriptionCustom__c,Manufacturer__c,Model__c,GearType__c" />
 
     <lightning:layoutItem size="6" class="slds-p-around_small">
-        <lightning:input label="Name of the Product"
+        <lightning:input label="{! $Label.c.ZK_NameProduct}"
                          name="name"
                          value="{!v.simpleRecord.Name}"
                          required="true"/>
     </lightning:layoutItem>
     <lightning:layoutItem size="6" class="slds-p-around_small">
-        <lightning:input label="Active"
+        <lightning:input label="{! $Label.c.ZK_Active}"
                          name="IsActive"
                          type="checkbox"
                          checked="{!v.simpleRecord.IsActive}" onchange="{!c.doCheck}"/>
     </lightning:layoutItem>
     <lightning:layoutItem size="6" class="slds-p-around_small">
-        <lightning:input label="Product Code"
+        <lightning:input label="{! $Label.c.ZK_ProductCode}"
                          name="productCode"
-                         required="true"
                          value="{!v.simpleRecord.ProductCode}"/>
     </lightning:layoutItem>
     <lightning:layoutItem size="6" class="slds-p-around_small">
-        <lightning:input label="Manufacturer"
+        <lightning:input label="{! $Label.c.ZK_Manufacturer}"
                          name="manufacturer"
                          required="true"
                          value="{!v.simpleRecord.Manufacturer__c}"/>
     </lightning:layoutItem>
     <lightning:layoutItem size="6" class="slds-p-around_small">
-        <lightning:input label="Model"
+        <lightning:input label="{! $Label.c.ZK_Model}"
                          name="model"
                          required="true"
                          value="{!v.simpleRecord.Model__c}"/>
     </lightning:layoutItem>
     <lightning:layoutItem size="6" class="slds-p-around_small">
-        <lightning:select aura:id="gearType" label="Gear Type" name="gearType" value="{!v.simpleRecord.GearType__c}" >
+        <lightning:select aura:id="gearType" label="{! $Label.c.ZK_GearType}" name="gearType" value="{!v.simpleRecord.GearType__c}" >
+            <aura:iteration items="{!v.product.GearType__c}" var="gear">
+                <option value="{!gear}" ></option>
+            </aura:iteration>
             <option value="Mouse">Mouse</option>
             <option value="Keyboard">Keyboard</option>
             <option value="Headset">Headset</option>
@@ -60,7 +62,7 @@
         </lightning:select>
     </lightning:layoutItem>
     <lightning:layoutItem size="12" class="slds-p-around_small">
-        <lightning:inputRichText value="{!v.simpleRecord.DescriptionCustom__c}" label="Description" />
+        <lightning:inputRichText value="{!v.simpleRecord.DescriptionCustom__c}" label="{! $Label.c.ZK_Description}" />
     </lightning:layoutItem>
 
 

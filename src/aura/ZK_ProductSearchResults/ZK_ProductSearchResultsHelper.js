@@ -12,9 +12,6 @@
                 const temp=response.getReturnValue();
                 component.set('v.searchResponse',temp);
             }
-            else {
-                console.log("Failed with state: " + state);
-            }
         });
         $A.enqueueAction(action);
     },

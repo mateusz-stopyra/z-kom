@@ -25,11 +25,12 @@
             </aura:if>
         </div>
     </aura:if>
-    <aura:if isTrue="{!v.searchResponse.length == 0}">
-        <ui:message title="No results found" severity="error" closable="false">
-            Sorry. No results found for provided criteria. Please try again by typing different words.
+    <aura:if isTrue="{!v.searchResponse == null || v.searchResponse.length == 0}">
+        <ui:message class="slds-text-body_regular" title="No results found" severity="error" closable="false">
+            {!$Label.c.ZK_NoResults}
         </ui:message>
     </aura:if>
+
 
 
 </aura:component>

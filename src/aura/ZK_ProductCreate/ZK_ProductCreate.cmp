@@ -25,9 +25,9 @@
 
         <lightning:layoutItem size="12" class="slds-p-around_small">
             <lightning:progressIndicator currentStep="{!v.currentStep}" type="path" variant="base">
-                <lightning:progressStep label="General" value="1"/>
-                <lightning:progressStep label="Product Gallery" value="2"/>
-                <lightning:progressStep label="Select main product image" value="3"/>
+                <lightning:progressStep label="{! $Label.c.DS_General}" value="1"/>
+                <lightning:progressStep label="{! $Label.c.ZK_ProductGallery}" value="2"/>
+                <lightning:progressStep label="{! $Label.c.ZK_SelectMainImage}" value="3"/>
             </lightning:progressIndicator>
         </lightning:layoutItem>
 
@@ -45,13 +45,13 @@
 
     <footer class="slds-modal__footer">
         <aura:if isTrue="{!v.currentStep == '1'}">
-            <lightning:button label="Save and Next" variant="brand" type="submit" onclick="{!c.requestRecordSave}"/>
+            <lightning:button label="{! $Label.c.ZK_SaveAndNext}" variant="brand" type="submit" onclick="{!c.requestRecordSave}"/>
         </aura:if>
         <aura:if isTrue="{!v.currentStep == '2'}">
-            <lightning:button label="Next" variant="brand" type="submit" onclick="{!c.requestSelectDisplayImage}"/>
+            <lightning:button label="{! $Label.c.DS_Next}" variant="brand" type="submit" onclick="{!c.requestSelectDisplayImage}"/>
         </aura:if>
         <aura:if isTrue="{!v.currentStep == '3'}">
-            <lightning:button label="Finish" variant="brand" type="submit" onclick="{!c.closeDialog}"/>
+            <lightning:button label="{! $Label.c.ZK_Finish}" variant="brand" type="submit" onclick="{!c.closeDialog}"/>
         </aura:if>
     </footer>
 

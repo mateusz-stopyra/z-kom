@@ -413,4 +413,11 @@
         <shortDescription>DS_PleaseChooseValidFile</shortDescription>
         <value>Please choose a valid file.</value>
     </labels>
+    <labels>
+        <fullName>ZK_SaveAndNext</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ZK_SaveAndNext</shortDescription>
+        <value>Save and Next</value>
+    </labels>
 </CustomLabels>

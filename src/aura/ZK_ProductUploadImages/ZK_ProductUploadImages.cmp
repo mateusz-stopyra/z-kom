@@ -8,7 +8,7 @@
 
     <div class="slds-grid_vertical">
         <div>
-            <lightning:fileUpload label="Upload Images"
+            <lightning:fileUpload label="{!$Label.c.ZK_UploadImages}"
                                   multiple="true"
                                   accept="{!v.accept}"
                                   onuploadfinished="{!c.onImagesUploaded}"

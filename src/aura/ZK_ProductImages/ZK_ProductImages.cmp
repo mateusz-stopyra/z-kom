@@ -8,7 +8,7 @@
 
     <lightning:card>
         <h2 class="slds-text-heading_small slds-m-left_medium slds-m-bottom_medium">
-            Product Gallery
+            {! $Label.c.ZK_ProductGallery}
         </h2>
 
         <div style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.currentImage + '\');height: 300px;'}"

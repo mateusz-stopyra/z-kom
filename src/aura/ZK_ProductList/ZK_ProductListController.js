@@ -2,8 +2,8 @@
     onLoad : function(component, event, helper) {
         const actions = [
             { label: 'View', name: 'view' },
-            { label: 'Edit', name: 'edit' }];
-            // { label: 'Delete', name: 'delete'}];
+            { label: 'Edit', name: 'edit' },
+            { label: 'Delete', name: 'delete'}];
 
 
         component.set('v.mycolumns', [
@@ -36,10 +36,10 @@
                 });
                 viewRecordEvent.fire();
                 break;
-            // case 'delete':
-            //     const productName = event.getParam('row').Name;
-            //     helper.deleteProduct(component, productId, productName);
-            //     break;
+            case 'delete':
+                const productName = event.getParam('row').Name;
+                helper.deleteProduct(component, productId, productName);
+                break;
         }
     },
 

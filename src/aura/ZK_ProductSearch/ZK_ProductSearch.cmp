@@ -7,12 +7,12 @@
     <aura:handler name="gearSelect" event="c:ZK_GearSelect" action="{!c.onGearSubmit}"/>
 
     <div class="FindMovie">
-        <lightning:card title="Search for Electronic Gear">
+        <lightning:card title="{!$Label.c.ZK_SearchBar}">
             <c:ZK_ProductSearchForm/>
         </lightning:card>
     </div>
 
-    <lightning:card aura:id="card" title="Search Results:" class="slds-hide">
+    <lightning:card aura:id="card" title="{!$Label.c.ZK_SearchResults}" class="slds-hide">
         <c:ZK_ProductSearchResults aura:id="mediaSearchResultsCmp"/>
     </lightning:card>
 
