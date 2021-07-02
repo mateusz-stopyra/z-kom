@@ -60,16 +60,7 @@ public with sharing class ZK_ProductController {
         return products;
     }
 
-    @AuraEnabled
-    public static List<ProductData> getProductDataSearchResults(String query){
-        List<Product2> products = getSearchResults(query);
-        List<ProductData> productDataList = new List<ZK_ProductController.ProductData>();
-        for (Product2 p : products){
-            ProductData productData = getProductData(p.Id);
-            productDataList.add(productData);
-        }
-        return productDataList;
-    }
+
 
     @AuraEnabled
     public static List<Product2> getGearTypeSearchResults(String searchQuery){

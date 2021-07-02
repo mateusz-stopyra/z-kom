@@ -5,7 +5,6 @@
             if(status === 'SUCCESS'){
                 const modalBody = component;
                 overlay.showCustomModal({
-                    // header : 'Add new Product',
                     body : modalBody,
                     showCloseButton : true,
                     cssClass : 'slds-modal_medium',
