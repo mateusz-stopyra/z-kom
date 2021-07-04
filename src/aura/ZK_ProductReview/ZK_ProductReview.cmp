@@ -1,0 +1,28 @@
+<aura:component description="ZK_ProductReview" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes">
+
+    <aura:attribute name="review" type="Object"/>
+
+<!--    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+
+    <div class="slds-box">
+
+        <div class="slds-grid slds-grid_vertical-align-center">
+
+            <lightning:avatar src="{!v.review.CreatedBy.SmallPhotoUrl}"
+                              fallbackIconName="standard:avatar"
+                              alternativeText="{!v.review.CreateBy.Name + ' photo'}"/>
+
+            <h2 class="slds-m-left_medium"> {!v.review.CreatedBy.Name} </h2>
+
+            <div class="slds-col_bump-right">
+                <c:ZK_ProductRating readOnly="true" rating="{!v.review.Rating__c}"/>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium">
+            <lightning:formattedRichText value="{!v.review.Content__c}"/>
+        </div>
+
+    </div>
+
+</aura:component>
