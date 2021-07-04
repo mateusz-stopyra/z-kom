@@ -10,12 +10,22 @@
     <div class="tile slds-col slds-size_1-of-5 slds-m-bottom_medium pointer"  onclick="{!c.onProductClick}">
         <div style="position: relative; height: 500px;" class="slds-box_border" >
             <div class="pointer bg-image slds-align_absolute-center" style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.product.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
+
+
             <div class="lower-third sld">
-                <h1 class="slds-truncate slds-align_absolute-center">{!v.product.Manufacturer__c}</h1>
-                <h1 class="slds-align_absolute-center">{!v.product.Model__c}</h1>
+                <h1 class="slds-truncate slds-align_absolute-center" >{!v.product.Manufacturer__c}</h1>
+<!--                <h1 class="slds-align_absolute-center">{!v.product.Model__c}</h1>-->
+                <h1 class="slds-align_absolute-center">€<lightning:formattedNumber value="{!v.product.PricebookEntries[0].UnitPrice}" style="decimal" minimumFractionDigits="2"/></h1>
+                <div class="slds-is-absolute slds-grid slds-icon-text-error" style="top: 10px; right:10px">
+                    <div onclick="" class=" slds-p-around_xx-small rounded pointer ">
+                        <lightning:icon aura:id="icon2" variant="bare" class=" slds-icon-text-error"
+                                        iconName="utility:cart" size="small"/>
+                    </div>
+                </div>
             </div>
-            <div class="tileInfo pointer slds-text-align_center slds-text-heading_large ">
-                <p class="slds-m-top_medium"> €<lightning:formattedNumber value="{!v.product.PricebookEntries[0].UnitPrice}" style="decimal" minimumFractionDigits="2" /></p>
+            <div class="tileInfo pointer slds-text-align_center slds-text-heading_medium ">
+<!--                <p class="slds-m-top_medium"> €<lightning:formattedNumber value="{!v.product.PricebookEntries[0].UnitPrice}" style="decimal" minimumFractionDigits="2" /></p>-->
+                <p class="slds-m-top_medium">{!v.product.Model__c}</p>
             </div>
         </div>
     </div>
