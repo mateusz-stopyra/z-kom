@@ -38,7 +38,7 @@
                 const toastEvent = $A.get("e.force:showToast");
                 toastEvent.setParams({
                     title: 'Review posted',
-                    message: 'Thanks for review',
+                    message: 'You review has been added',
                     type: 'success'
                 });
                 toastEvent.fire();

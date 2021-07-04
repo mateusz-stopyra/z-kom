@@ -42,7 +42,7 @@
 
             if (status === 'SUCCESS') {
                 overlay.showCustomModal({
-                    header: 'Create a Review',
+                    header: 'Add a Review',
                     body: component,
                     showCloseButton: true,
                     cssClass: 'slds-modal_medium',
