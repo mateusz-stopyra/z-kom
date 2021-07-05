@@ -66,6 +66,13 @@
                     if (products.length === 0) {
                         component.set('v.cartVisible', false);
                     }
+                    const toastEvent = $A.get("e.force:showToast");
+                    toastEvent.setParams({
+                        title: 'Product removed',
+                        message: 'Product has been removed from your shopping cart. ',
+                        type: 'error'
+                    });
+                    toastEvent.fire();
                 }
                 else {
                     console.log(state);

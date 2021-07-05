@@ -22,76 +22,56 @@
                                     alternativeText="Close"/>
                 </div>
             </div>
-
             <div class="slds-m-top_medium">
-
                 <aura:if isTrue="{!or(v.products.length == 0, v.products == null)}">
-                    <p class="slds-text-heading_small slds-text-align_center"> Cart empty </p>
+                    <p class="slds-text-heading_small slds-text-align_center"> Your card is empty. </p>
                 </aura:if>
-
                 <aura:if isTrue="{!greaterthanorequal(v.products.length, 1)}">
                     <aura:iteration items="{!v.products}" var="product">
-
                         <div class="slds-grid slds-grid_vertical-align-center">
                             <div style="{!'background-image: url(\'' + product.Image + '\''}"
                                  class="product-image">
                             </div>
-
                             <div class="slds-m-left_small">
                                 <a data-value="{!product.Id}" onclick="{!c.goToProduct}">
                                     <h3 class="slds-text-heading_small">{!product.Name}</h3>
                                 </a>
-
                                 <lightning:formattedNumber value="{!product.Amount * product.UnitPrice}"
                                                            style="currency"/>
                             </div>
-
                             <div class="slds-col_bump-left slds-grid slds-grid_vertical-align-center">
-                                <p id="{!product.Id}"
-                                   onclick="{!c.addProduct}"
-                                   class="quantity-button cursor-pointer">+</p>
-
-                                <p class="slds-text-heading_small slds-m-horizontal_small"> x{!product.Amount} </p>
-
-                                <p id="{!product.Id}"
-                                   onclick="{!c.takeProduct}"
-                                   class="quantity-button cursor-pointer">-</p>
-
+<!--                                <p id="{!product.Id}"-->
+<!--                                   onclick="{!c.addProduct}"-->
+<!--                                   class="quantity-button cursor-pointer">+</p>-->
+<!--                                <p class="slds-text-heading_small slds-m-horizontal_small">{!product.Amount} </p>-->
+<!--                                <p id="{!product.Id}"-->
+<!--                                   onclick="{!c.takeProduct}"-->
+<!--                                   class="quantity-button cursor-pointer">-</p>-->
                                 <p id="{!product.Id}"
                                    onclick="{!c.removeProduct}"
                                    class="quantity-button cursor-pointer slds-m-left_small">
-                                    <lightning:icon iconName="utility:close"
+                                    <lightning:icon iconName="utility:delete"
                                                     alternativeText="Close"
-                                                    variant="error"
                                                     size="xx-small"/>
                                 </p>
                             </div>
-
                         </div>
-
                     </aura:iteration>
-
                     <div class="slds-m-top_medium slds-grid">
-
                         <div>
                             <h2 class="slds-text-heading_small">Total price</h2>
                             <p class="slds-text-heading_small">
                                 <lightning:formattedNumber value="{!v.totalPrice}" style="currency"/>
                             </p>
                         </div>
-
                         <div class="slds-col_bump-left">
-                            <lightning:button variant="brand" class="slds-text-heading_small slds-p-around_small">
-                                    Proceed to cash
+                            <lightning:button variant="success" class="slds-text-heading_small slds-p-around_small">
+                                    Checkout
                             </lightning:button>
                         </div>
-
                     </div>
                 </aura:if>
-
             </div>
-
         </div>
     </aura:if>
-
 </aura:component>

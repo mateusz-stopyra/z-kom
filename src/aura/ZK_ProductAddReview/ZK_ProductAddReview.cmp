@@ -34,6 +34,7 @@
         <div class="slds-m-top_small">
             <p class="slds-text-heading_small slds-m-bottom_x-small"> Content </p>
             <lightning:inputRichText value="{!v.simpleRecord.Content__c}"
+                                     placeholder="Your review description..."
                                      label="Content"/>
         </div>
         <div class="slds-grid slds-m-top_small">

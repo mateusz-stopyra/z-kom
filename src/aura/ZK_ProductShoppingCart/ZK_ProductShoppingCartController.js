@@ -7,6 +7,7 @@
         const productId = event.target.id;
         helper.changeProductQuantity(component, productId, 1);
     },
+
     takeProduct: function (component, event, helper) {
         const productId = event.target.id;
         helper.changeProductQuantity(component, productId, -1);
@@ -23,10 +24,8 @@
 
     goToProduct: function (component, event, helper) {
         event.stopPropagation();
-
         const selectedItem = event.currentTarget;
         const recId = selectedItem.dataset.value;
-
         const navEvt = $A.get("e.force:navigateToSObject");
         navEvt.setParams({
             'recordId': recId,

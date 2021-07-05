@@ -1,9 +1,8 @@
 ({
     doInit: function(component, event, helper) {
         const productId = component.get('v.recordId');
-
-        helper.fetchCurrentProfile(component);
         helper.fetchReviews(component, productId);
+        helper.fetchCurrentProfile(component);
     },
 
     onNewReviewClick: function (component, event, helper) {
