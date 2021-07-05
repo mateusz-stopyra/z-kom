@@ -1,0 +1,22 @@
+<aura:component controller="ZK_ProductController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+                access="global">
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <aura:attribute name="products" type="Product2[]"/>
+    <aura:attribute name="mycolumns" type="List"/>
+
+    <aura:registerEvent name="newProduct" type="c:ZK_NewProduct"/>
+    <aura:registerEvent name="deleteProduct" type="c:ZK_DeleteProduct"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.onLoad}"/>
+
+    <lightning:datatable data="{! v.products }"
+                         columns="{! v.mycolumns }"
+                         keyField="id"
+                         hideCheckboxColumn="true"
+                         showRowNumberColumn="true"
+                         onrowaction="{!c.onRow}"/>
+
+
+</aura:component>

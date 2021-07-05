@@ -12,5 +12,4 @@
     resetTempRate: function(component, event, helper) {
         helper.setRating(component, 0, true);
     }
-
 })

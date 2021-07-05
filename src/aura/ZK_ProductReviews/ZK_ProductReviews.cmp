@@ -2,44 +2,36 @@
                 implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes">
 
     <aura:attribute name="reviews" type="Object[]"/>
+    <aura:attribute name="currentProfile" type="Object"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-
     <aura:handler event="c:ZK_ReviewsUpdate" action="{!c.onReviewUpdated}"/>
 
     <lightning:overlayLibrary aura:id="overlayLib"/>
 
     <lightning:card>
         <div class="slds-grid slds-size_1-of-1 slds-p-horizontal_medium slds-grid_vertical-align-center">
-
             <div>
                 <h2> Reviews ({!v.reviews.length}) </h2>
             </div>
-
-            <aura
-            <lightning:layoutItem class="right-align" alignmentBump="left">
+            <aura:if isTrue="{!v.currentProfile.Name == 'Custom Customer Community User' || v.currentProfile.Name == 'System Administrator'}">
+                <lightning:layoutItem class="right-align" alignmentBump="left">
                 <lightning:button iconPosition="right" class="right-align" variant="neutral"
                                   onclick="{!c.onNewReviewClick}">
                     Add Review
                 </lightning:button>
             </lightning:layoutItem>
-
-
+            </aura:if>
         </div>
-
         <div class="slds-p-horizontal_medium slds-size_1-of-1  slds-m-top_medium">
-
             <aura:if isTrue="{!v.reviews.length == 0}">
                 <p> No Reviews </p>
             </aura:if>
-
             <aura:iteration items="{!v.reviews}" var="review">
                 <div class="slds-m-top_small">
                     <c:ZK_ProductReview review="{!review}"/>
                 </div>
             </aura:iteration>
         </div>
-
     </lightning:card>
-
 </aura:component>

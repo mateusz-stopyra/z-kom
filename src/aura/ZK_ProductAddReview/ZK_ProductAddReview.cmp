@@ -2,7 +2,6 @@
 
     <aura:attribute name="reviewId" type="Id"/>
     <aura:attribute name="productId" type="Id" required="true"/>
-
     <aura:attribute name="record" type="Object"/>
     <aura:attribute name="simpleRecord" type="Object"/>
     <aura:attribute name="recordError" type="Object"/>
@@ -27,19 +26,16 @@
                              value="{!v.simpleRecord.Product__c}"
                              label=""/>
         </div>
-
         <div>
             <p class="slds-text-heading_small slds-m-bottom_x-small"> Rating </p>
             <c:ZK_ProductRating rating="{!v.simpleRecord.Rating__c}"
                               readOnly="false"/>
         </div>
-
         <div class="slds-m-top_small">
             <p class="slds-text-heading_small slds-m-bottom_x-small"> Content </p>
             <lightning:inputRichText value="{!v.simpleRecord.Content__c}"
                                      label="Content"/>
         </div>
-
         <div class="slds-grid slds-m-top_small">
             <div class="slds-col_bump-left">
                 <lightning:button variant="brand" onclick="{!c.onPostClick}">
@@ -47,6 +43,5 @@
                 </lightning:button>
             </div>
         </div>
-
     </div>
 </aura:component>

@@ -1,0 +1,34 @@
+<aura:component description="ZK_ProductMainImageSelect" controller="ZK_ProductController">
+
+    <aura:attribute name="images" type="String[]"/>
+    <aura:attribute name="selectedImage" type="String"/>
+    <aura:attribute name="productId" type="Id"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+
+
+    <fieldset class="slds-form-element slds-align_absolute-center" >
+        <div class="slds-form-element__control ">
+            <aura:iteration items="{!v.images}" var="image">
+                <div style="height: 192px; width: 192px" class="pointer slds-visual-picker slds-visual-picker_medium">
+                    <input type="radio" id="{!image}" value="{!image}" name="selectedImage"/>
+                    <label for="{!image}">
+                            <span
+                                    class="bg-image slds-size_2-of-12 pointer slds-m-right_x-small pointer slds-visual-picker__figure slds-visual-picker__text"
+                                    onclick="{!c.selectDisplayImage}">
+                            <img id="{!image}" src="{!'/sfc/servlet.shepherd/document/download/' + image}" style="height: 100%; width: 100%;"/>
+                            </span>
+                        <span class="slds-visual-picker__body">
+                                </span>
+                        <span class="slds-icon_container slds-visual-picker__text-check">
+                            <lightning:icon iconName="utility:sprite" alternativeText="selected"/>
+                            </span>
+                    </label>
+                </div>
+            </aura:iteration>
+        </div>
+    </fieldset>
+
+
+</aura:component>

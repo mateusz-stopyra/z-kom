@@ -1,0 +1,15 @@
+.THIS .cursor-pointer {
+    cursor: pointer;
+}
+
+.THIS .cart-items-indicator {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: coral;
+    color: black;
+    font-weight: bold;
+    border-radius: 30%;
+}

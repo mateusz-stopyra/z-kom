@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="ZK_ReviewDelete">
+    <aura:attribute name="localReview" type="Local_Review__c"/>
+</aura:event>

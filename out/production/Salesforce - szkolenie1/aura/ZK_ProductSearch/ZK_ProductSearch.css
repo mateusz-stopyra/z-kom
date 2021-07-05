@@ -1,0 +1,12 @@
+.THIS.FindMovie {
+    margin-bottom:10px
+}
+
+.THIS .media-modal{
+    min-height: 500px;
+    min-width: 800px;
+}
+
+.THIS.hide {
+    display: none;
+}

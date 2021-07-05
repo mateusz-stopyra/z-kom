@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="ZK_ReviewAdd">
+    <aura:attribute name="localReviewId" type="Id"/>
+</aura:event>

@@ -1,0 +1,43 @@
+<aura:component description="ZK_ProductTile"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+                access="global" controller="ZK_ProductShopController">
+
+
+    <aura:attribute name="height" type="Integer" default="550"/>
+    <aura:attribute name="product" type="Product2"/>
+    <aura:attribute name="productId" type="Id" />
+
+    <aura:attribute name="image" type="String"/>
+    <aura:attribute name="unitPrice" type="Decimal" required="true"/>
+    <aura:attribute name="currentProfile" type="Object"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:registerEvent name="ZK_ProductShopped" type="c:ZK_ProductShopped"/>
+
+
+    <div class="tile slds-col slds-size_1-of-5 slds-m-bottom_medium pointer" >
+        <div style="position: relative; height: 500px;" class="slds-box_border" >
+            <div class="pointer bg-image slds-align_absolute-center" style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.product.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
+
+
+            <div class="lower-third sld">
+                <h1 class="slds-truncate slds-align_absolute-center" onclick="{!c.onProductClick}" >{!v.product.Manufacturer__c}</h1>
+<!--                <h1 class="slds-align_absolute-center">{!v.product.Model__c}</h1>-->
+                <h1 class="slds-align_absolute-center">€<lightning:formattedNumber value="{!v.product.PricebookEntries[0].UnitPrice}" style="decimal" minimumFractionDigits="2"/></h1>
+                <aura:if isTrue="{!v.currentProfile.Name == 'Custom Customer Community User' || v.currentProfile.Name == 'System Administrator'}">
+                <div class="slds-is-absolute slds-grid slds-icon-text-error" style="top: 10px; right:10px">
+                    <div onclick="{!c.onProductShop}" class=" slds-p-around_xx-small rounded pointer ">
+                        <lightning:icon aura:id="icon2" variant="bare" class=" slds-icon-text-error"
+                                        iconName="utility:cart" size="small"/>
+                    </div>
+                </div>
+                </aura:if>
+            </div>
+            <div class="tileInfo pointer slds-text-align_center slds-text-heading_medium ">
+                <p class="slds-m-top_medium">{!v.product.Model__c}</p>
+            </div>
+        </div>
+    </div>
+
+</aura:component>

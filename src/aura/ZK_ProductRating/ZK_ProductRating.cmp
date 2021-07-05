@@ -1,20 +1,16 @@
 <aura:component description="ZK_ProductRating" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes">
-    <aura:attribute name="readOnly" type="Boolean" default="false"/>
-    <aura:attribute name="rating" type="Decimal" default="0"/>
     <aura:attribute name="maxRating" type="Decimal[]" default="[1,2,3,4,5]"/>
-
     <aura:attribute name="tempRating" type="Decimal" default="0"/>
+    <aura:attribute name="rating" type="Decimal" default="0"/>
+    <aura:attribute name="readOnly" type="Boolean" default="false"/>
 
     <div class="slds-grid">
-
         <aura:iteration items="{!v.maxRating}" var="r">
-
             <div id="{!r}"
                  class="{!v.readOnly ? 'cursor-normal' : 'cursor-pointer'}"
                  onclick="{!c.onRate}"
                  onmouseleave="{!c.resetTempRate}"
                  onmouseenter="{!c.setTempRate}">
-
                 <aura:if isTrue="{!and(not(v.readOnly), greaterthanorequal(v.tempRating, 1))}">
                     <aura:if isTrue="{!greaterthanorequal(v.tempRating, r)}">
                         <lightning:icon iconName="utility:favorite" variant="warning" size="small"/>
@@ -23,7 +19,6 @@
                         <lightning:icon iconName="utility:favorite" size="small"/>
                     </aura:if>
                 </aura:if>
-
                 <aura:if isTrue="{!lessthan(v.tempRating, 1)}">
                     <aura:if isTrue="{!greaterthanorequal(v.rating, r)}">
                         <lightning:icon iconName="utility:favorite" variant="warning" size="small"/>
@@ -32,10 +27,7 @@
                         <lightning:icon iconName="utility:favorite" size="small"/>
                     </aura:if>
                 </aura:if>
-
             </div>
-
         </aura:iteration>
-
     </div>
 </aura:component>

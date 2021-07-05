@@ -1,0 +1,40 @@
+<aura:component description="ZK_ProductSearchForm" access="global"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction">
+
+    <aura:attribute name="searchQuery" type="String"/>
+
+    <aura:registerEvent name="formSubmit" type="c:ZK_FormSubmit"/>
+    <aura:registerEvent name="gearSelect" type="c:ZK_GearSelect"/>
+
+    <lightning:layout horizontalAlign="center" verticalAlign="end">
+        <lightning:layoutItem padding="around-small" size="3">
+            <lightning:input aura:id="queryInputField"
+                             label="Search"
+                             type="text"
+                             variant="label-hidden"
+                             value="{!v.searchQuery}"
+                             placeholder="{!$Label.c.ZK_TellUs}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small">
+            <lightning:button variant="brand" label="{!$Label.c.DS_SearchButton}" onclick="{!c.onFormSubmit}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <lightning:layout horizontalAlign="center" verticalAlign="end">
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Laptop" class="slds-size_full"  variant="neutral" label="{!$Label.c.ZK_Laptop}" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="PC" class="slds-size_full" variant="neutral" label="{!$Label.c.ZK_PC}" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Headset" class="slds-size_full" variant="neutral" label="{!$Label.c.ZK_Headset}" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Keyboard" class="slds-size_full" variant="neutral" label="{!$Label.c.ZK_Keyboard}" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2" padding="around-small">
+            <lightning:button value="Mouse" class="slds-size_full" variant="neutral" label="{!$Label.c.ZK_Mouse}" onclick="{!c.onGearTypeSubmit}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+</aura:component>

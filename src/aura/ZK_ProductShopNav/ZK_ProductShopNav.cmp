@@ -1,0 +1,24 @@
+<aura:component description="ZK_ProductShopNav" controller="ZK_ProductShopController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes"
+                access="global">
+
+    <aura:attribute name="cartVisible" type="Boolean" default="false"/>
+    <aura:attribute name="cartSize" type="Integer" default="0"/>
+    <aura:attribute name="productsInCart" type="Object[]" default="[]"/>
+
+    <aura:handler event="c:ZK_ProductShopped" action="{!c.onProductShopped}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+        <c:ZK_ProductShoppingCart aura:id="productCart"
+                          cartVisible="{!v.cartVisible}"
+                          cartSize="{!v.cartSize}"
+                          products="{!v.productsInCart}"/>
+        <div class="slds-grid slds-p-horizontal_medium">
+            <div class="slds-col_bump-left slds-grid slds-grid_vertical-align-center cursor-pointer"
+                 onclick="{!c.onCartClick}">
+                <p class="slds-m-left_medium slds-text-heading_small cart-items-indicator">
+                        {!greaterthanorequal(v.cartSize, 10) ? '9+' : v.cartSize}
+                </p>
+                <lightning:icon iconName="utility:cart" size="medium"/>
+            </div>
+        </div>
+</aura:component>

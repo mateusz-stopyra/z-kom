@@ -4,13 +4,11 @@
         if (readOnly){
             return;
         }
-
         if (temp) {
             component.set('v.tempRating', rate);
         }
         else {
             component.set('v.rating', rate);
         }
-
     }
 })
