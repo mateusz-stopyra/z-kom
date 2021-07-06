@@ -1,0 +1,6 @@
+<aura:component description="ZK_DiscountProductList">
+
+    <aura:attribute name="products" type="Product2[]"/>
+    <aura:attribute
+
+</aura:component>

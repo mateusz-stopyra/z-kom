@@ -1,6 +1,60 @@
-<!--
- - Created by mateuszstopyra on 05.07.2021.
- -->
+<aura:component description="ZK_DiscountManager" controller="ZK_ProductController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes"
+                access="global">
 
-<aura:component description="ZK_DiscountManager">
+    <ltng:require styles="{!$Resource.NoHeader}" />
+
+    <aura:attribute name="discount" type="String"/>
+    <aura:attribute name="products" type="Product2[]"/>
+    <aura:attribute name="product" type="Product2"/>
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:registerEvent name="discountSelect" type="c:ZK_GearSelect"/>
+
+    <div class="FindMovie">
+        <lightning:card title="Discount Manager Bar">
+            <lightning:layout horizontalAlign="center" verticalAlign="end">
+                <lightning:layoutItem padding="around-small" size="3">
+                    <lightning:input aura:id="discountName"
+                                     label="Search"
+                                     type="text"
+                                     variant="label-hidden"
+                                     value="{!v.searchQuery}"
+                                     placeholder="Enter Discount Name"/>
+                    <lightning:input aura:id="discountValue"
+                                     label="Search"
+                                     type="text"
+                                     variant="label-hidden"
+                                     value="{!v.searchQuery}"
+                                     placeholder="Enter discount"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small">
+                    <lightning:button variant="brand" label="Apply Discount" onclick=""/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </lightning:card>
+    </div>
+    <lightning:card aura:id="card" title="Choose a Product to be discounted">
+            <div class="slds-p-around_small">
+                    <h1>Results: {!v.products.length}  </h1>
+                    <br></br>
+                    <div class="slds-grid slds-gutters slds-wrap">
+                        <aura:iteration items="{!v.products}" var="result">
+                            <div data-index="{!result.Id}" class="tile slds-col slds-size_1-of-5 slds-m-bottom_medium pointer" onclick="{!c.onProductClick}" >
+                                <div style="position: relative; height: 500px;" class="slds-box_border" >
+                                    <div class="pointer bg-image slds-align_absolute-center" style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + result.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
+                                    <div class="lower-third sld">
+                                        <h1 class="slds-truncate slds-align_absolute-center">{!result.Manufacturer__c}</h1>
+                                        <h1 class="slds-align_absolute-center">€<lightning:formattedNumber value="{!result.PricebookEntries[0].UnitPrice}" style="decimal" minimumFractionDigits="2"/></h1>
+                                    </div>
+                                    <div class="tileInfo pointer slds-text-align_center slds-text-heading_medium ">
+                                        <p class="slds-m-top_medium">{!result.Model__c}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:iteration>
+                    </div>
+            </div>
+    </lightning:card>
 </aura:component>

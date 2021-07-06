@@ -1,0 +1,32 @@
+<aura:component description="ZK_DiscountPriceBook" controller="ZK_PriceBookController">
+
+    <aura:attribute name="priceBook" type="Pricebook2"/>
+
+    <lightning:overlayLibrary aura:id="discountView"/>
+
+    <div class="slds-p-vertical_small">
+        <lightning:layout>
+            <lightning:layoutItem size="6">
+                <div class="slds-p-horizontal_small slds-p-vertical_x-small">
+                    {!v.priceBook.Name}
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="3">
+                <lightning:button label="View"
+                                  onclick="{!c.showDiscount}"
+                                  variant="neutral"
+                                  class="toggleButton"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="3">
+                <lightning:buttonStateful labelWhenOn="Deactivate"
+                                          labelWhenOff="Activate"
+                                          state="{!v.priceBook.IsActive}"
+                                          onclick="{!c.toggleActive}"
+                                          variant="neutral"
+                                          class="toggleButton"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+
+
+</aura:component>

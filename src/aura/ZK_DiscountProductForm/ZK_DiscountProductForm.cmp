@@ -1,0 +1,27 @@
+<aura:component description="ZK_DiscountProductForm" controller="ZK_PriceBookController">
+
+    <aura:attribute name="selectedProducts" type="Map"/>
+    <aura:attribute name="name" type="String"/>
+    <aura:attribute name="percent" type="Integer"/>
+
+    <aura:registerEvent name="ZK_ReInit" type="c:ZK_ReInit"/>
+    <aura:handler event="c:ZK_ReInit" action="{!c.reInit}"/>
+
+    <div style="" class="slds-align_absolute-center">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="8" class="slds-p-around_small">
+                <ui:inputText label="Name" value="{!v.name}" updateOn="keyup"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" class="slds-p-around_small">
+                <ui:inputNumber label="Discount Percent" value="{!v.percent}" updateOn="keyup" maxLength="3"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" class="slds-p-horizontal_large">
+                <div class="slds-align_absolute-center">
+                    <lightning:button label="Submit" variant="brand" onclick="{!c.submit}" />
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+
+
+</aura:component>
