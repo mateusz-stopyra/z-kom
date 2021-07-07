@@ -1,3 +1,28 @@
+.THIS.FindMovie {
+    margin-bottom:10px
+}
+
+.THIS .price{
+    color: red;
+}
+
+.THIS .strike {
+    text-decoration: line-through;
+}
+
+.THIS .media-modal{
+    min-height: 400px;
+    min-width: 800px;
+}
+
+.THIS.hide {
+    display: none;
+}
+
+.THIS.myBtn  {
+    width: 40px;
+}
+
 .THIS {
 
 }
@@ -15,14 +40,6 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-}
-
-.THIS .price{
-    color: red;
-}
-
-.THIS .strike {
-    text-decoration: line-through;
 }
 
 .THIS .lower-third {
@@ -71,7 +88,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 90%;
+    height: 400px;
     width: 100%;
     color: #2F4F4F;
     display: none;

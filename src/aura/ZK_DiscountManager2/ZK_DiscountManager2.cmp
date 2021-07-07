@@ -1,4 +1,7 @@
-<aura:component description="ZK_DiscountManager2" controller="ZK_ProductController">
+<aura:component description="ZK_DiscountManager2" controller="ZK_ProductController"  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes"
+                access="global">
+
+    <ltng:require styles="{!$Resource.NoHeader}" />
 
     <aura:attribute name="products" type="Product2[]"/>
     <aura:attribute name="selectedProducts" type="Map"/>
@@ -6,11 +9,14 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:ZK_ReInit" action="{!c.doInit}"/>
+
     <lightning:card title="Form">
         <c:ZK_DiscountProductForm selectedProducts="{!v.selectedProducts}" percent="{!v.percent}"/>
     </lightning:card>
     <lightning:card title="Products">
-        <c:DiscountProductList products="{!v.products}" selectedProducts="{!v.selectedProducts}" percent="{!v.percent}"/>
+        <c:ZK_DiscountProductList products="{!v.products}" selectedProducts="{!v.selectedProducts}" percent="{!v.percent}"/>
     </lightning:card>
 
 </aura:component>

@@ -1,0 +1,19 @@
+<aura:component description="ZK_DiscountList" controller="ZK_PriceBookController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes"
+                access="global">
+
+    <aura:attribute name="priceBooks" type="Pricebook2[]" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:ZK_ReInit" action="{!c.doInit}"/>
+
+    <lightning:card title="Discount Managment">
+        <lightning:layout multipleRows="true">
+            <aura:iteration items="{!v.priceBooks}" var="priceBook">
+                <lightning:layoutItem size="12">
+                    <c:ZK_DiscountPriceBook priceBook="{!priceBook}"/>
+                </lightning:layoutItem>
+            </aura:iteration>
+        </lightning:layout>
+    </lightning:card>
+
+</aura:component>

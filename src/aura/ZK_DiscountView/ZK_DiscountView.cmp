@@ -1,0 +1,51 @@
+<aura:component description="ZK_DiscountView" controller="ZK_PriceBookController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes"
+                access="global">
+
+    <aura:attribute name="priceBook" type="Pricebook2"/>
+    <aura:attribute name="priceBookEntries" type="PricebookEntry[]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:overlayLibrary aura:id="discountView"/>
+
+    <aura:html tag="style">
+        .cuf-content{
+        padding: 0 0rem !important
+        }
+        .slds-p-around--medium{
+        padding: 0rem !important
+        }
+        .slds-modal__content{
+        height: unset !important;
+        max-height: unset !important;
+        }
+    </aura:html>
+
+        <!--    <div class="slds-grid slds-gutters slds-wrap">-->
+        <!--    <div class="slds-scrollable_y">-->
+        <!--    <div class="slds-p-around_small">-->
+        <div class="slds-size_1-of-1 slds-grid_align-center slds-p-around_small">
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{!v.priceBookEntries}" var="priceBookEntry">
+                    <!--                <lightning:layoutItem size="3">-->
+                    <c:ZK_DiscountProductTile position="200" size="slds-size_1-of-3" product="{!priceBookEntry.Product2}" lock="True" selected="True"
+                                              />
+                    <!--                </lightning:layoutItem>-->
+                </aura:iteration>
+            </div>
+        </div>
+
+                <!--        </lightning:layout>-->
+                <!--    </div>-->
+                <!--    </div>-->
+                <!--    </div>-->
+
+                <!--    <footer class="slds-modal__footer">-->
+                <!--        <lightning:button label="Close" variant="neutral" onclick="{!c.closeModal}"/>-->
+                <!--    </footer>-->
+
+
+
+
+</aura:component>

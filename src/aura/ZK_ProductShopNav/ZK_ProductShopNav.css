@@ -13,3 +13,9 @@
     font-weight: bold;
     border-radius: 30%;
 }
+
+.THIS.floating-cart {
+    top: 15px;
+    right: 0;
+    z-index: 1000000;
+}

@@ -13,4 +13,15 @@ public with sharing class ZK_ProductReviewsController {
         return profile;
     }
 
+    @AuraEnabled
+    public static Integer getAverageRating(Id productId) {
+        List<AggregateResult> res = [SELECT AVG(Rating__c) FROM Local_Review__c WHERE Product__c=:productId];
+        if (res.isEmpty()) {
+            return 0;
+        }
+
+        Decimal average = (Decimal) res[0].get('expr0');
+        return Integer.valueOf(average.round());
+    }
+
 }

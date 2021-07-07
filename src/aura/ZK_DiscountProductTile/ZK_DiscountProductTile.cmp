@@ -1,6 +1,49 @@
-<!--
- - Created by mateuszstopyra on 06.07.2021.
- -->
+<aura:component description="ZK_DiscountProductTile"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+                access="global" controller="ZK_ProductController">
 
-<aura:component description="ZK_DiscountProductTile">
+    <aura:attribute name="product" type="Product2"/>
+    <aura:attribute name="selectedProducts" type="Map"/>
+    <aura:attribute name="percent" type="Integer"/>
+    <aura:attribute name="percentThis" type="Integer"/>
+    <aura:attribute name="photo" type="String"/>
+    <aura:attribute name="price" type="Integer"/>
+    <aura:attribute name="selected" type="Boolean" default="false"/>
+    <aura:attribute name="lock" type="Boolean" default="false"/>
+    <aura:attribute name="size" default="slds-size_1-of-5" type="String"/>
+    <aura:attribute name="position" type="Integer" default="400"/>
+    <aura:attribute name="defaultPrice" type="Integer"/>
+    <aura:attribute name="priceCount" type="Integer"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:ZK_ReInit" action="{!c.reInit}"/>
+
+    <div class="{!'tile slds-col slds-m-bottom_medium pointer ' + v.size}" onclick="{!c.tileClick}">
+        <div style="{!'position: relative; height: ' + v.position + 'px; '}" class="slds-box_border">
+<!--        <div style="position: relative; height: 500px;" class="slds-box_border">-->
+            <div class="pointer bg-image slds-align_absolute-center"
+                 style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.product.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
+            <div class="lower-third sld">
+                <h1 class="slds-truncate slds-align_absolute-center">{!v.product.Manufacturer__c}</h1>
+                <h1 class="slds-align_absolute-center">
+                    <aura:if isTrue="{!v.defaultPrice}">
+                        <span class="strike">€<lightning:formattedNumber value="{!v.defaultPrice}" style="decimal" minimumFractionDigits="2"/></span>&nbsp;&nbsp;&nbsp;
+                        <span class="price">€<lightning:formattedNumber value="{!v.price}" style="decimal" minimumFractionDigits="2"/></span>
+                    </aura:if>
+                    <aura:if isTrue="{!(empty(v.defaultPrice))}" >
+                    €<lightning:formattedNumber value="{!v.price}" style="decimal" minimumFractionDigits="2"/>
+                    </aura:if>
+                    <aura:if isTrue="{!v.percentThis}">
+                        <ui:outputCurrency class="slds-p-horizontal_small price"
+                                           value="{!v.price - (v.price * (v.percentThis/100))}"/>
+                        <span class="slds-p-horizontal_small">{!v.percentThis}%</span>
+                    </aura:if>
+                </h1>
+            </div>
+            <div class="tileInfo pointer slds-text-align_center slds-text-heading_medium ">
+                <p class="slds-m-top_medium">{!v.product.Model__c}</p>
+            </div>
+        </div>
+    </div>
+    <!--    </lightning:button>-->
 </aura:component>

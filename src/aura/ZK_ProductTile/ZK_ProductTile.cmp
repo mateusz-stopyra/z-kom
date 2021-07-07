@@ -7,7 +7,9 @@
     <aura:attribute name="productId" type="Id" />
     <aura:attribute name="image" type="String"/>
     <aura:attribute name="unitPrice" type="Decimal" required="true"/>
+    <aura:attribute name="price" type="Decimal" required="true"/>
     <aura:attribute name="currentProfile" type="Object"/>
+    <aura:attribute name="defaultPrice" type="Integer"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
@@ -18,7 +20,15 @@
             <div class="pointer bg-image slds-align_absolute-center" style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.product.Display_Image__c + '\'); height: 80%; width: 80%;'}"></div>
             <div class="lower-third sld">
                 <h1 class="slds-truncate slds-align_absolute-center" onclick="{!c.onProductClick}" >{!v.product.Manufacturer__c}</h1>
-                <h1 class="slds-align_absolute-center">€<lightning:formattedNumber value="{!v.product.PricebookEntries[0].UnitPrice}" style="decimal" minimumFractionDigits="2"/></h1>
+                <h1 class="slds-align_absolute-center">
+                    <aura:if isTrue="{!v.defaultPrice}">
+                        <span class="strike">€<lightning:formattedNumber value="{!v.defaultPrice}" style="decimal" minimumFractionDigits="2"/></span>&nbsp;&nbsp;&nbsp;
+                        <span class="price">€<lightning:formattedNumber value="{!v.price}" style="decimal" minimumFractionDigits="2"/></span>
+                    </aura:if>
+                    <aura:if isTrue="{!(empty(v.defaultPrice))}" >
+                        €<lightning:formattedNumber value="{!v.price}" style="decimal" minimumFractionDigits="2"/>
+                    </aura:if>
+                </h1>
                 <aura:if isTrue="{!v.currentProfile.Name == 'Custom Customer Community User' || v.currentProfile.Name == 'System Administrator'}">
                 <div class="slds-is-absolute slds-grid slds-icon-text-error" style="top: 10px; right:10px">
                     <div onclick="{!c.onProductShop}" class=" slds-p-around_xx-small rounded pointer ">

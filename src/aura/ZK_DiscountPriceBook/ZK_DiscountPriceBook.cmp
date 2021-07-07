@@ -1,32 +1,43 @@
-<aura:component description="ZK_DiscountPriceBook" controller="ZK_PriceBookController">
+<aura:component description="ZK_DiscountPriceBook" controller="ZK_PriceBookController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes"
+                access="global">
 
     <aura:attribute name="priceBook" type="Pricebook2"/>
 
     <lightning:overlayLibrary aura:id="discountView"/>
 
-    <div class="slds-p-vertical_small">
-        <lightning:layout>
-            <lightning:layoutItem size="6">
-                <div class="slds-p-horizontal_small slds-p-vertical_x-small">
-                    {!v.priceBook.Name}
-                </div>
-            </lightning:layoutItem>
-            <lightning:layoutItem size="3">
-                <lightning:button label="View"
-                                  onclick="{!c.showDiscount}"
-                                  variant="neutral"
-                                  class="toggleButton"/>
-            </lightning:layoutItem>
-            <lightning:layoutItem size="3">
-                <lightning:buttonStateful labelWhenOn="Deactivate"
-                                          labelWhenOff="Activate"
-                                          state="{!v.priceBook.IsActive}"
-                                          onclick="{!c.toggleActive}"
-                                          variant="neutral"
-                                          class="toggleButton"/>
-            </lightning:layoutItem>
-        </lightning:layout>
-    </div>
+    <aura:registerEvent name="ZK_ReInit" type="c:ZK_ReInit"/>
+    <aura:handler event="c:ZK_ReInit" action="{!c.reInit}"/>
 
-
+<!--    <lightning:card title="Promotions">-->
+        <div class="slds-p-vertical_small">
+            <lightning:layout>
+                <lightning:layoutItem size="5">
+                    <div class="slds-p-horizontal_small slds-p-vertical_x-small">
+                            {!v.priceBook.Name}
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="2">
+                    <lightning:button label="Discount"
+                                      onclick="{!c.showDiscount}"
+                                      variant="neutral"
+                                      class="toggleButton"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="2">
+                    <lightning:button label="Remove"
+                                      onclick="{!c.removeDiscount}"
+                                      variant="neutral"
+                                      class="toggleButton"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="2">
+                    <lightning:buttonStateful labelWhenOn="Deactivate"
+                                              labelWhenOff="Activate"
+                                              state="{!v.priceBook.IsActive}"
+                                              onclick="{!c.toggleActive}"
+                                              variant="{!v.priceBook.IsActive ? 'brand' : 'neutral'}"
+                                              class="toggleButton"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+<!--    </lightning:card>-->
 </aura:component>

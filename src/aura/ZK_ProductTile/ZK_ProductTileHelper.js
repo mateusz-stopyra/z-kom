@@ -24,4 +24,23 @@
 
         $A.enqueueAction(action);
     },
+
+    getPrice : function (component, event) {
+        let action = component.get('c.getProductPrice');
+        action.setParams({
+            'productId' : component.get('v.product.Id')
+        });
+        action.setCallback(this,function(response) {
+            const state = response.getState();
+            if(state==='SUCCESS'){
+                const temp=response.getReturnValue();
+                component.set('v.price',temp[0].UnitPrice); //biore ostatnią cene
+                if (temp.length > 1) {
+                    component.set('v.defaultPrice', temp[temp.length - 1].UnitPrice);
+                }
+            }
+        });
+        $A.enqueueAction(action);
+    },
+
 })

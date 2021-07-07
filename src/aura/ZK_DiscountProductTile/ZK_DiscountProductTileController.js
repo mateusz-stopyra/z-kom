@@ -1,7 +1,7 @@
 ({
     doInit : function (component, event, helper) {
-        helper.getphoto;
-        helper.getprice;
+        helper.getPrice(component, event);
+        // component.set('v.percentThis',5);
     },
 
     tileClick : function (component, event, helper) {

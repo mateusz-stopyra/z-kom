@@ -6,10 +6,17 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler event="c:ZK_ReviewsUpdate" action="{!c.onReviewUpdated}"/>
+    <aura:attribute name="averageRating" type="Integer"/>
 
     <lightning:overlayLibrary aura:id="overlayLib"/>
 
     <lightning:card>
+        <aura:if isTrue="{!v.reviews.length != 0}">
+            <div class="slds-p-horizontal_medium slds-m-bottom_medium">
+                <h2 class="slds-text-heading_small">Average Rating</h2>
+                <c:ZK_ProductRating rating="{!v.averageRating}" readOnly="{!true}"/>
+            </div>
+        </aura:if>
         <div class="slds-grid slds-size_1-of-1 slds-p-horizontal_medium slds-grid_vertical-align-center">
             <div>
                 <h2> Reviews ({!v.reviews.length}) </h2>

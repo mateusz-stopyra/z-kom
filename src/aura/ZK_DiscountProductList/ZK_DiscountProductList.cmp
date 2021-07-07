@@ -1,6 +1,17 @@
-<aura:component description="ZK_DiscountProductList">
+<aura:component description="ZK_DiscountProductList" controller="ZK_ProductController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes"
+                access="global">
 
     <aura:attribute name="products" type="Product2[]"/>
-    <aura:attribute
+    <aura:attribute name="selectedProducts" type="Map"/>
+    <aura:attribute name="percent" type="Integer" />
 
+    <div class="slds-p-around_small">
+            <h1>Results: {!v.products.length}  </h1>
+            <br></br>
+            <div class="slds-grid slds-gutters slds-wrap">
+                <aura:iteration items="{!v.products}" var="result">
+                    <c:ZK_DiscountProductTile product="{!result}" selectedProducts="{!v.selectedProducts}" percent="{!v.percent}"/>
+                </aura:iteration>
+            </div>
+    </div>
 </aura:component>

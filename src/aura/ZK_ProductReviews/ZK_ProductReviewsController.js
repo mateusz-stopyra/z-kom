@@ -3,6 +3,7 @@
         const productId = component.get('v.recordId');
         helper.fetchReviews(component, productId);
         helper.fetchCurrentProfile(component);
+        helper.fetchAverageRating(component, productId);
     },
 
     onNewReviewClick: function (component, event, helper) {
@@ -13,5 +14,6 @@
     onReviewUpdated: function (component, event, helper) {
         const productId = component.get('v.recordId');
         helper.fetchReviews(component, productId);
+        helper.fetchAverageRating(component, productId);
     }
 })

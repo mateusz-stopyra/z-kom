@@ -18,4 +18,5 @@
         <c:ZK_ProductSearchResults aura:id="mediaSearchResultsCmp"/>
     </lightning:card>
 
+
 </aura:component>

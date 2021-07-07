@@ -41,5 +41,21 @@
             }
         });
         $A.enqueueAction(action);
-    }
+    },
+
+    fetchAverageRating: function(component, productId) {
+        const action = component.get('c.getAverageRating');
+        action.setParams({
+            productId: productId
+        });
+
+        action.setCallback(this, function (res) {
+            const state = res.getState();
+            if (state === 'SUCCESS') {
+                component.set('v.averageRating', res.getReturnValue());
+            }
+        });
+        $A.enqueueAction(action);
+    },
+
 })

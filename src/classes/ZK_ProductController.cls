@@ -80,14 +80,14 @@ public with sharing class ZK_ProductController {
 
     @AuraEnabled
     public static List<Product2> getAllProducts(){
-        String searchQueryString = 'SELECT Id, Name, DescriptionCustom__c, Display_Image__c, Manufacturer__c, Model__c, Family, ProductCode, IsActive, GearType__c,(SELECT UnitPrice from PricebookEntries where Pricebook2.IsStandard=true) from Product2';
+        String searchQueryString = 'SELECT Id, Name, DescriptionCustom__c, Display_Image__c, Manufacturer__c, Model__c, Family, ProductCode, IsActive, GearType__c from Product2';
         List<Product2> products = Database.query(searchQueryString);
         System.debug(products);
         return products;
     }
 
     @AuraEnabled
-    public static List<PricebookEntry> getProductPrice(Id productId){
+    public static List<PricebookEntry> getProductPrice(String productId){
         List<PricebookEntry> prices = [SELECT UnitPrice from PricebookEntry WHERE Product2Id=:productId and IsActive = TRUE ORDER BY UnitPrice];
         return prices;
     }

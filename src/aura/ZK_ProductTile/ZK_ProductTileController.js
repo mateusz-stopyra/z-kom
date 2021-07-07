@@ -11,19 +11,20 @@
         component.set('v.unitPrice', product.PricebookEntries[0].UnitPrice);
 
         const image = component.get('v.image');
-        const unitPrice = component.get('v.unitPrice');
+        const price = component.get('v.price');
 
         const productShopped = $A.get('e.c:ZK_ProductShopped');
         productShopped.setParams({
             product: product,
             image: image,
-            unitPrice: unitPrice
+            unitPrice: price
         });
         productShopped.fire();
     },
 
     doInit: function(component, event, helper) {
         helper.fetchCurrentProfile(component);
+        helper.getPrice(component, event);
     },
 
 })

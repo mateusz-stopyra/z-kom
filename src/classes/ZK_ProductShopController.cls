@@ -29,4 +29,10 @@ public with sharing class ZK_ProductShopController {
         return true;
     }
 
+    @AuraEnabled
+    public static List<PricebookEntry> getProductPrice(String productId){
+        List<PricebookEntry> prices = [SELECT UnitPrice from PricebookEntry WHERE Product2Id=:productId and IsActive = TRUE ORDER BY UnitPrice];
+        return prices;
+    }
+
 }
