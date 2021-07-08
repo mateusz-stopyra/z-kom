@@ -1,14 +1,12 @@
 public with sharing class ZK_PriceBookController {
 
-//    where isStandard = false
 
-    //1szy string to id produktu, drugi o ile przecena
     @AuraEnabled
     public static void newPriceBook(String name, Map<String, Integer> products){
         System.debug(products);
         if(validate(name, products)){
-            Pricebook2 pricebook = createPriceBook(name); //tworze pricebook
-            populatePriceBook(pricebook, products); //dodaje prod do niego
+            Pricebook2 pricebook = createPriceBook(name);
+            populatePriceBook(pricebook, products);
         }
     }
 
@@ -31,6 +29,15 @@ public with sharing class ZK_PriceBookController {
     @AuraEnabled
     public static void activatePriceBook(String priceBookId){
         setPriceBookActive(priceBookId, true);
+    }
+
+    @AuraEnabled
+    public static Boolean deleteDiscount(Id id) {
+        List<PricebookEntry> entries = [SELECT Id FROM PricebookEntry WHERE Pricebook2Id=:id];
+        delete entries;
+
+        Database.DeleteResult res = Database.delete(id);
+        return res.success;
     }
 
     private static void setPriceBookActive(String priceBookId, Boolean value){
@@ -60,7 +67,7 @@ public with sharing class ZK_PriceBookController {
         for(String key : products.keySet()){
             System.debug(products.get(key));
             if(products.get(key) <= 0 || products.get(key) > 100){
-                throw new AuraHandledException('Discount getPricebookEntriesvalue error');
+                throw new AuraHandledException('Discount price error');
             }
         }
         return true;
@@ -86,7 +93,7 @@ public with sharing class ZK_PriceBookController {
 
 
         for(String productId : products.keySet()){
-            PricebookEntry price = getProductPriceFromList(productId, actualPrices); //biore podstawową cene i dodaje do niej
+            PricebookEntry price = getProductPriceFromList(productId, actualPrices);
             PricebookEntry newPrice = new PricebookEntry();
             newPrice.Product2Id = productId;
             newPrice.Pricebook2Id = pricebook2.Id;
@@ -114,12 +121,4 @@ public with sharing class ZK_PriceBookController {
         return null;
     }
 
-    @AuraEnabled
-    public static Boolean deleteDiscount(Id id) {
-        List<PricebookEntry> entries = [SELECT Id FROM PricebookEntry WHERE Pricebook2Id=:id];
-        delete entries;
-
-        Database.DeleteResult res = Database.delete(id);
-        return res.success;
-    }
 }

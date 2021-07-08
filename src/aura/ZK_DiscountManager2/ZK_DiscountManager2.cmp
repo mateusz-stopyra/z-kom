@@ -8,15 +8,13 @@
     <aura:attribute name="percent" type="Integer" default="5"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler event="c:ZK_ReInit" action="{!c.doInit}"/>
 
-    <lightning:card title="Form">
+    <lightning:card title="{!$Label.c.ZK_DiscountForm}">
         <c:ZK_DiscountProductForm selectedProducts="{!v.selectedProducts}" percent="{!v.percent}"/>
     </lightning:card>
-    <lightning:card title="Products">
+    <lightning:card title="{!$Label.c.ZK_Products}">
         <c:ZK_DiscountProductList products="{!v.products}" selectedProducts="{!v.selectedProducts}" percent="{!v.percent}"/>
     </lightning:card>
-
 </aura:component>

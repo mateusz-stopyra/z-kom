@@ -18,6 +18,4 @@
         component.set('v.percent', 5);
         component.set('v.name', '');
     },
-
-
 })

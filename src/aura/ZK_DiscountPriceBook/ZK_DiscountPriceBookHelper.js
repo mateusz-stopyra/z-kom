@@ -19,12 +19,14 @@
                 let appEvent = $A.get('e.c:ZK_ReInit');
                 appEvent.fire();
                 let toastEvent = $A.get("e.force:showToast");
+                let info = $A.get("$Label.c.ZK_DeletedDiscount");
+                let success = $A.get("$Label.c.DS_OperationSucesfull");
                 toastEvent.setParams({
-                    "title": "Success!",
+                    "title": success,
                     'duration':' 5000',
-                    'type': 'success',
+                    'type': 'warning',
                     'mode': 'pester',
-                    "message": "You have successfully deleted the discount."
+                    "message": info
                 });
                 toastEvent.fire();
             }else {
@@ -47,12 +49,14 @@
                 let appEvent = $A.get('e.c:ZK_ReInit');
                 appEvent.fire();
                 let toastEvent = $A.get("e.force:showToast");
+                let info = $A.get("$Label.c.ZK_ActivateDiscount");
+                let success = $A.get("$Label.c.DS_OperationSucesfull");
                 toastEvent.setParams({
-                    "title": "Success!",
+                    "title": success,
                     'duration':' 5000',
                     'type': 'success',
                     'mode': 'pester',
-                    "message": "You have successfully activated the discount."
+                    "message": info
                 });
                 toastEvent.fire();
             }else {
@@ -75,12 +79,14 @@
                 let appEvent = $A.get('e.c:ZK_ReInit');
                 appEvent.fire();
                 let toastEvent = $A.get("e.force:showToast");
+                let success = $A.get("$Label.c.DS_OperationSucesfull");
+                let info = $A.get("$Label.c.ZK_DisableDiscount");
                 toastEvent.setParams({
-                    "title": "Success!",
+                    "title": success,
                     'duration':' 5000',
                     'type': 'warning',
                     'mode': 'pester',
-                    "message": "You have disabled the discount."
+                    "message": info
                 });
                 toastEvent.fire();
             }else {
@@ -93,8 +99,9 @@
     showViewModal : function (component, event) {
         $A.createComponent('c:ZK_DiscountView', {'priceBook' : component.get('v.priceBook')}, function (content, status){
             if(status==='SUCCESS'){
+                let info = $A.get("$Label.c.ZK_DiscountView");
                 component.find('discountView').showCustomModal({
-                    header : 'Discount View',
+                    header : info,
                     body : content,
                     showCloseButton : true
                 })

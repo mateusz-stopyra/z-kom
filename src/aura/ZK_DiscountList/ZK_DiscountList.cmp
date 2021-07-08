@@ -6,7 +6,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler event="c:ZK_ReInit" action="{!c.doInit}"/>
 
-    <lightning:card title="Discount Managment">
+    <lightning:card title="{!$Label.c.ZK_DiscountManagement}">
         <lightning:layout multipleRows="true">
             <aura:iteration items="{!v.priceBooks}" var="priceBook">
                 <lightning:layoutItem size="12">
@@ -15,5 +15,4 @@
             </aura:iteration>
         </lightning:layout>
     </lightning:card>
-
 </aura:component>

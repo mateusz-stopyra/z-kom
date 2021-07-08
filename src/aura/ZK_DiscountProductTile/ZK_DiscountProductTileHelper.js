@@ -44,10 +44,4 @@
     reInit: function (component, event) {
         component.set('v.selected', false);
     },
-
-    checkIsPromoted : function (component, event) {
-
-    }
-
-
 })
