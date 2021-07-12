@@ -91,5 +91,32 @@
             totalPrice += product.Amount * product.UnitPrice;
         }
         component.set('v.totalPrice', totalPrice);
+    },
+
+    handleCheckout : function (component,event) {
+        let evt = $A.get("e.force:navigateToURL");
+        evt.setParams({
+            "url": "/checkout"
+        });
+        localStorage.setItem('products',JSON.stringify(component.get('v.products')));
+        evt.fire();
+        const action = component.get('c.resetBasket');
+        action.setParams({
+            cart: component.get('v.products')
+        });
+        action.setCallback(this, res => {
+            const state = res.getState();
+            if (state === 'SUCCESS') {
+                console.log(state);
+            } else {
+                console.log(state);
+                console.log(res.getError());
+            }
+        });
+        $A.enqueueAction(action);
+        component.set('v.products',null);
+        component.set('v.cartSize',0);
     }
+
+
 })

@@ -1,0 +1,16 @@
+<design:component>
+    <design:attribute name="addressDeliveryStreet" description="address delivery street" />
+    <design:attribute name="addressStreet" description="address street" />
+    <design:attribute name="addressCity" description="address city" />
+    <design:attribute name="addressDeliveryCity" description="address delivery city" />
+    <design:attribute name="addressDeliveryPostalCode" description="address delivery postal code" />
+    <design:attribute name="addressPostalCode" description="address postal code" />
+    <design:attribute name="addressCountry" description="address country" />
+    <design:attribute name="addressDeliveryCountry" description="address delivery country" />
+    <design:attribute name="addressDeliveryProvince" description="address delivery province" />
+    <design:attribute name="addressProvince" description="address province" />
+    <design:attribute name="paymentMethod" />
+    <design:attribute name="firstName" />
+    <design:attribute name="lastName" />
+
+</design:component>

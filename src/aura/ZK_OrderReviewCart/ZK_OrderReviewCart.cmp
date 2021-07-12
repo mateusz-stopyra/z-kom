@@ -1,0 +1,64 @@
+<aura:component description="ZK_OrderReviewCart" controller="ZK_ProductShopController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes, lightning:availableForFlowScreens"
+                access="global">
+
+    <!--    <aura:attribute name="products" type="ZK_ProductsWrapper[]"/>-->
+    <aura:attribute name="totalPrice" type="Decimal"/>
+    <aura:attribute name="OpportunityId" type="String"/>
+    <aura:attribute name="products" type="OpportunityLineItem[]"/>
+
+    <aura:method name="recalculateTotalPrice" action="{!c.recalculateTotalPrice}"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <aura:if isTrue="{!greaterthanorequal(v.products.length, 1)}">
+    <div class="slds-card">
+        <div class="slds-m-top_medium">
+            <aura:iteration items="{!v.products}" var="product">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <div style="{!'background-image: url(\'' + product.Image + '\''}"
+                         class="product-image">
+                    </div>
+                    <div class="slds-m-left_small">
+                        <!--                                <a data-value="{!product.Id}" onclick="{!c.goToProduct}">-->
+                        <h3 class="slds-text-heading_small">{!product.Name}</h3>
+                        <!--                                </a>-->
+                        <lightning:formattedNumber value="{!product.Amount * product.UnitPrice}" style="currency"/>
+                    </div>
+                    <div class="slds-col_bump-left slds-grid slds-grid_vertical-align-center slds-m-right_large">
+                        <p id="{!product.Id}"
+                           onclick="{!c.addProduct}"
+                           class="quantity-button cursor-pointer">+</p>
+                        <p class="slds-text-heading_small slds-m-horizontal_small">{!product.Amount} </p>
+                        <p id="{!product.Id}"
+                           onclick="{!c.takeProduct}"
+                           class="quantity-button cursor-pointer">-</p>
+                    </div>
+                </div>
+            </aura:iteration>
+            <div class="slds-m-top_medium slds-grid slds-m-left_large">
+                <div>
+                    <h2 class="slds-text-heading_small">Total price</h2>
+                    <p class="slds-text-heading_small">
+                        <lightning:formattedNumber value="{!v.totalPrice}" style="currency"/>
+                    </p>
+                </div>
+            </div>
+            <div class="slds-grid slds-m-right_large slds-m-bottom_large">
+                <div class="slds-col_bump-left">
+                    <lightning:button class="slds-m-left_large" aura:id="NEXT" label="Proceed to delivery"
+                                      variant="brand" onclick="{!c.onButtonPressed}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    </aura:if>
+
+    <aura:if isTrue="{!or(v.products.length == 0, v.products == null)}">
+        <div class="slds-card slds-text-align_center slds-text-heading_medium">
+            <p class="slds-m-top_large slds-m-bottom_large">Your basket is empty.</p>
+        </div>
+    </aura:if>
+
+
+</aura:component>

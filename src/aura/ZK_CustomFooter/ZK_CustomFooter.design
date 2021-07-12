@@ -1,0 +1,6 @@
+<design:component>
+    <design:attribute name="canBack" description="Previous" />
+    <design:attribute name="canNext" description="Proceed" />
+    <design:attribute name="canNext2" description="Review Order" />
+    <design:attribute name="canFinish" description="Confirm Order" />
+</design:component>

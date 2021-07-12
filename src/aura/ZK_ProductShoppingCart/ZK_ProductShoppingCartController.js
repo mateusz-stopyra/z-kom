@@ -32,5 +32,11 @@
             'slideDevName': 'related'
         });
         navEvt.fire();
+    },
+
+    doCheckout : function (component, event, helper) {
+        helper.handleCheckout(component,event);
+        component.set('v.cartVisible', false);
+
     }
 })

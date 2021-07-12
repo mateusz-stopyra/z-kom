@@ -3,9 +3,12 @@
                 access="global">
 
     <aura:attribute name="cartVisible" type="Boolean" required="true"/>
-    <aura:attribute name="products" type="Object[]" required="true"/>
+    <aura:attribute name="products" type="ZK_ProductsWrapper[]" required="true"/>
     <aura:attribute name="cartSize" type="Integer" required="true"/>
     <aura:attribute name="totalPrice" type="Decimal"/>
+
+<!--    <lightning:flow aura:id="checkout" />-->
+    <lightning:navigation aura:id="navService"/>
 
     <aura:method name="recalculateTotalPrice" action="{!c.recalculateTotalPrice}"/>
 
@@ -40,13 +43,13 @@
                                                            style="currency"/>
                             </div>
                             <div class="slds-col_bump-left slds-grid slds-grid_vertical-align-center">
-<!--                                <p id="{!product.Id}"-->
-<!--                                   onclick="{!c.addProduct}"-->
-<!--                                   class="quantity-button cursor-pointer">+</p>-->
-<!--                                <p class="slds-text-heading_small slds-m-horizontal_small">{!product.Amount} </p>-->
-<!--                                <p id="{!product.Id}"-->
-<!--                                   onclick="{!c.takeProduct}"-->
-<!--                                   class="quantity-button cursor-pointer">-</p>-->
+                                <p id="{!product.Id}"
+                                   onclick="{!c.addProduct}"
+                                   class="quantity-button cursor-pointer">+</p>
+                                <p class="slds-text-heading_small slds-m-horizontal_small">{!product.Amount} </p>
+                                <p id="{!product.Id}"
+                                   onclick="{!c.takeProduct}"
+                                   class="quantity-button cursor-pointer">-</p>
                                 <p id="{!product.Id}"
                                    onclick="{!c.removeProduct}"
                                    class="quantity-button cursor-pointer slds-m-left_small">
@@ -65,7 +68,7 @@
                             </p>
                         </div>
                         <div class="slds-col_bump-left">
-                            <lightning:button variant="success" class="slds-text-heading_small slds-p-around_small">
+                            <lightning:button variant="success" class="slds-text-heading_small slds-p-around_small" onclick="{!c.doCheckout}">
                                     Checkout
                             </lightning:button>
                         </div>
@@ -74,4 +77,8 @@
             </div>
         </div>
     </aura:if>
+
+
+
+
 </aura:component>

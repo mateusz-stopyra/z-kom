@@ -1,0 +1,81 @@
+<aura:component description="ZK_DeliveryPayment" controller="ZK_ProductReviewsController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome, forceCommunity:availableForAllPageTypes, lightning:availableForFlowScreens"
+                access="global">
+
+    <aura:attribute name="addressStreet" default="Jagielly 16/20" type="String"/>
+    <aura:attribute name="addressDeliveryStreet" default="Zlota 45" type="String"/>
+    <aura:attribute name="addressCity" default="Lublin" type="String"/>
+    <aura:attribute name="addressDeliveryCity" default="Warszawa" type="String"/>
+    <aura:attribute name="addressPostalCode" default="20-281" type="String"/>
+    <aura:attribute name="addressDeliveryPostalCode" default="00-001" type="String"/>
+    <aura:attribute name="addressCountry" default="Polska" type="String"/>
+    <aura:attribute name="addressDeliveryCountry" default="Polska" type="String"/>
+    <aura:attribute name="addressDeliveryProvince" default="mazowieckie" type="String"/>
+    <aura:attribute name="addressProvince" default="lubelskie" type="String"/>
+    <aura:attribute name="showDeliveryAddress" type="Boolean" default="false"/>
+    <aura:attribute name="firstName" type="String"/>
+    <aura:attribute name="lastName" type="String"/>
+    <aura:attribute name="paymentMethod" type="String"/>
+
+    <lightning:card>
+    <lightning:layout>
+        <lightning:layoutItem padding="around-medium">
+            <lightning:card title="Billing Address">
+                <lightning:inputAddress
+                        aura:id="address"
+                        streetLabel="Street"
+                        cityLabel="City"
+                        countryLabel="Country"
+                        province="{!v.addressProvince}"
+                        postalCodeLabel="PostalCode"
+                        provinceLabel="State"
+                        street="{!v.addressStreet}"
+                        city="{!v.addressCity}"
+                        country="{!v.addressCountry}"
+                        postalCode="{!v.addressPostalCode}"
+                        />
+                <lightning:input type="checkbox" onchange="{!c.showAddressModal}" label="Other Delivery Address"></lightning:input>
+            </lightning:card>
+        </lightning:layoutItem>
+        <aura:if isTrue="{!v.showDeliveryAddress}">
+            <lightning:layoutItem padding="around-medium">
+                <lightning:card title="Delivery Address">
+                    <lightning:inputAddress
+                            aura:id="deliveryAddress"
+                            streetLabel="Street"
+                            cityLabel="City"
+                            province="{!v.addressDeliveryProvince}"
+                            countryLabel="Country"
+                            provinceLabel="State"
+                            postalCodeLabel="PostalCode"
+                            street="{!v.addressDeliveryStreet}"
+                            city="{!v.addressDeliveryCity}"
+                            country="{!v.addressDeliveryCountry}"
+                            postalCode="{!v.addressDeliveryPostalCode}"
+                            />
+                </lightning:card>
+            </lightning:layoutItem>
+        </aura:if>
+        <lightning:layoutItem padding="around-medium">
+        <lightning:card title="Payment Method">
+            <lightning:select value="{!v.paymentMethod}" label="Choose Payment method">
+                <option value="Credit Card">Credit Card</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="Cash on delivery">Cash on delivery</option>
+                <option value="Pickup in person">Pickup in person</option>
+            </lightning:select>
+        </lightning:card>
+        </lightning:layoutItem>
+    </lightning:layout>
+        <div class="slds-grid slds-m-right_large slds-m-bottom_large">
+            <div class="slds-col_bump-left">
+                <lightning:button aura:id="BACK" label="Previous"
+                                  variant="neutral" onclick="{!c.onButtonPressed}"/>
+                <lightning:button class="slds-m-left_large" aura:id="NEXT" label="Proceed to delivery"
+                                  variant="brand" onclick="{!c.onButtonPressed}"/>
+            </div>
+        </div>
+    </lightning:card>
+
+
+</aura:component>

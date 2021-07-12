@@ -1,0 +1,28 @@
+.THIS.cart-box {
+    width: 1000px;
+    max-height: 1000px;
+}
+
+.THIS .cursor-pointer {
+    cursor: pointer;
+}
+
+.THIS .product-image {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.THIS .quantity-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #D4D4D4;
+    border-radius: 50%;
+    font-size: 18px;
+    user-select: none;
+}
