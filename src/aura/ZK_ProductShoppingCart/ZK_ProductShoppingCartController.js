@@ -22,6 +22,10 @@
         helper.determineTotalPrice(component);
     },
 
+    clearBasket : function(component, event, helper){
+        helper.handleClearBasket(component, event);
+    },
+
     goToProduct: function (component, event, helper) {
         event.stopPropagation();
         const selectedItem = event.currentTarget;

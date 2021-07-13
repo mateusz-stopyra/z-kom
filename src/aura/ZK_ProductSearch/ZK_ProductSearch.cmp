@@ -17,6 +17,4 @@
     <lightning:card aura:id="card" title="{!$Label.c.ZK_SearchResults}" class="slds-hide">
         <c:ZK_ProductSearchResults aura:id="mediaSearchResultsCmp"/>
     </lightning:card>
-
-
 </aura:component>

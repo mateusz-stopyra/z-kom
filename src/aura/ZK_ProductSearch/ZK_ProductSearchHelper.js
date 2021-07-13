@@ -14,7 +14,4 @@
         const cmpTarget = component.find('card');
         $A.util.removeClass(cmpTarget, 'slds-hide');
     }
-
-
-
 })

@@ -47,7 +47,6 @@ public without sharing class ZK_ProductShopController {
             items.add(opportunityLineItem);
         }
         insert items;
-//        return items;
     }
 
     @AuraEnabled

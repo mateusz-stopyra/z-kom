@@ -15,7 +15,6 @@
                     console.log(p.image);
                 }
                 component.set('v.totalPrice', totalPrice);
-
             }
             else {
                 alert(state);
@@ -23,6 +22,30 @@
             }
         });
         $A.enqueueAction(products);
+    },
 
+    handleAddProductsToOrder : function (component, event) {
+        let actionClicked = event.getSource().getLocalId();
+        let navigate = component.get('v.navigateFlow');
+
+        const addProducts = component.get('c.addProductsToOrderProduct');
+        addProducts.setParams({
+            opportunityId : component.get('v.opportunityId'),
+            orderId : component.get('v.orderId')
+        });
+
+        addProducts.setCallback(this, function (res) {
+            const state = res.getState();
+            if (state === 'SUCCESS') {
+                let appEvent = $A.get("e.c:ZK_ClearBasket");
+                appEvent.fire();
+                navigate(actionClicked);
+            }
+            else {
+                alert(state);
+                alert(JSON.stringify(res.getError()));
+            }
+        });
+        $A.enqueueAction(addProducts);
     }
 })

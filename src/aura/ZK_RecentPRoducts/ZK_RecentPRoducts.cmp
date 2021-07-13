@@ -1,0 +1,15 @@
+<aura:component description="ZK_RecentPRoducts" implements="forceCommunity:availableForAllPageTypes" controller="ZK_RecentProductsController">
+
+    <aura:attribute name="products" type="Object[]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div>
+        <h2 class="slds-text-heading_small slds-text-align_center">Recent Products</h2>
+        <div class="slds-grid slds-gutters slds-wrap">
+            <aura:iteration items="{!v.products}" var="result">
+                    <c:ZK_ProductTile product="{!result}"/>
+            </aura:iteration>
+        </div>
+    </div>
+</aura:component>

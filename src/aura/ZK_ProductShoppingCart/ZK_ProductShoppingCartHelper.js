@@ -100,6 +100,9 @@
         });
         localStorage.setItem('products',JSON.stringify(component.get('v.products')));
         evt.fire();
+    },
+
+    handleClearBasket : function (component, event) {
         const action = component.get('c.resetBasket');
         action.setParams({
             cart: component.get('v.products')
@@ -116,7 +119,10 @@
         $A.enqueueAction(action);
         component.set('v.products',null);
         component.set('v.cartSize',0);
+
     }
+
+
 
 
 })

@@ -31,39 +31,22 @@
     },
 
     onButtonPressed: function(component, event, helper) {
-        const addProducts = component.get('c.addProductsToOpportunityLineItem');
-        addProducts.setParams({
-            products : component.get('v.products'),
-            opportunityId : component.get('v.OpportunityId')
-        });
-        addProducts.setCallback(this, function (res) {
-            const state = res.getState();
-            if (state === 'SUCCESS') {
-                component.set('v.products',state.getReturnValue());
-                let totalPrice = 0;
-                const products = component.get('v.products');
-                console.log(products);
-                for (let p of products) {
-                    // const product = products[p];
-                    console.log(p);
-                    console.log(p.Amount);
-                    console.log(p.UnitPrice);
-                    totalPrice += p.Amount * p.UnitPrice;
-                    console.log(totalPrice);
-                }
-                component.set('v.totalPrice', totalPrice);
-                console.log(component.get('v.totalPrice'));
-            }
-            else {
-                alert(state);
-                alert(JSON.stringify(res.getError()));
-            }
-        });
-        $A.enqueueAction(addProducts);
-
+        helper.handleAddProductsToOpportunity(component, event);
         let actionClicked = event.getSource().getLocalId();
         let navigate = component.get('v.navigateFlow');
         navigate(actionClicked);
-    }
+    },
+
+    goToProduct: function (component, event, helper) {
+        event.stopPropagation();
+        const selectedItem = event.currentTarget;
+        const recId = selectedItem.dataset.value;
+        const navEvt = $A.get("e.force:navigateToSObject");
+        navEvt.setParams({
+            'recordId': recId,
+            'slideDevName': 'related'
+        });
+        navEvt.fire();
+    },
 
 })

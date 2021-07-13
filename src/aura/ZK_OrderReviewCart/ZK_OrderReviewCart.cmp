@@ -2,7 +2,6 @@
                 implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes, lightning:availableForFlowScreens"
                 access="global">
 
-    <!--    <aura:attribute name="products" type="ZK_ProductsWrapper[]"/>-->
     <aura:attribute name="totalPrice" type="Decimal"/>
     <aura:attribute name="OpportunityId" type="String"/>
     <aura:attribute name="products" type="OpportunityLineItem[]"/>
@@ -20,10 +19,12 @@
                          class="product-image">
                     </div>
                     <div class="slds-m-left_small">
-                        <!--                                <a data-value="{!product.Id}" onclick="{!c.goToProduct}">-->
+                                                        <a data-value="{!product.Id}" onclick="{!c.goToProduct}">
                         <h3 class="slds-text-heading_small">{!product.Name}</h3>
-                        <!--                                </a>-->
+                                                        </a>
                         <lightning:formattedNumber value="{!product.Amount * product.UnitPrice}" style="currency"/>
+                        (<lightning:formattedNumber value="{!product.UnitPrice}"
+                                                    style="currency"/> / each)
                     </div>
                     <div class="slds-col_bump-left slds-grid slds-grid_vertical-align-center slds-m-right_large">
                         <p id="{!product.Id}"
@@ -53,12 +54,9 @@
         </div>
     </div>
     </aura:if>
-
     <aura:if isTrue="{!or(v.products.length == 0, v.products == null)}">
         <div class="slds-card slds-text-align_center slds-text-heading_medium">
             <p class="slds-m-top_large slds-m-bottom_large">Your basket is empty.</p>
         </div>
     </aura:if>
-
-
 </aura:component>

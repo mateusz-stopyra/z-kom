@@ -7,8 +7,9 @@
     <aura:attribute name="cartSize" type="Integer" required="true"/>
     <aura:attribute name="totalPrice" type="Decimal"/>
 
-<!--    <lightning:flow aura:id="checkout" />-->
     <lightning:navigation aura:id="navService"/>
+
+    <aura:handler event="c:ZK_ClearBasket" action="{!c.clearBasket}"/>
 
     <aura:method name="recalculateTotalPrice" action="{!c.recalculateTotalPrice}"/>
 
@@ -20,14 +21,12 @@
                 </div>
                 <div class="slds-col_bump-left cursor-pointer"
                      onclick="{!c.onCartClose}">
-                    <lightning:icon iconName="utility:close"
-                                    size="small"
-                                    alternativeText="Close"/>
+                    <lightning:icon iconName="utility:close" size="small" alternativeText="Close"/>
                 </div>
             </div>
             <div class="slds-m-top_medium">
                 <aura:if isTrue="{!or(v.products.length == 0, v.products == null)}">
-                    <p class="slds-text-heading_small slds-text-align_center"> Your card is empty. </p>
+                    <p class="slds-text-heading_small slds-text-align_center"> {!$Label.c.ZK_EmptyCart} </p>
                 </aura:if>
                 <aura:if isTrue="{!greaterthanorequal(v.products.length, 1)}">
                     <aura:iteration items="{!v.products}" var="product">
@@ -41,6 +40,8 @@
                                 </a>
                                 <lightning:formattedNumber value="{!product.Amount * product.UnitPrice}"
                                                            style="currency"/>
+                                (<lightning:formattedNumber value="{!product.UnitPrice}"
+                                                           style="currency"/> / each)
                             </div>
                             <div class="slds-col_bump-left slds-grid slds-grid_vertical-align-center">
                                 <p id="{!product.Id}"
@@ -62,14 +63,14 @@
                     </aura:iteration>
                     <div class="slds-m-top_medium slds-grid">
                         <div>
-                            <h2 class="slds-text-heading_small">Total price</h2>
+                            <h2 class="slds-text-heading_small">{!$Label.c.ZK_TotalPrice}</h2>
                             <p class="slds-text-heading_small">
                                 <lightning:formattedNumber value="{!v.totalPrice}" style="currency"/>
                             </p>
                         </div>
                         <div class="slds-col_bump-left">
                             <lightning:button variant="success" class="slds-text-heading_small slds-p-around_small" onclick="{!c.doCheckout}">
-                                    Checkout
+                                    {!$Label.c.ZK_Checkout}
                             </lightning:button>
                         </div>
                     </div>
@@ -77,8 +78,4 @@
             </div>
         </div>
     </aura:if>
-
-
-
-
 </aura:component>

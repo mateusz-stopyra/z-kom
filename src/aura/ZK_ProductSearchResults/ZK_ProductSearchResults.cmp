@@ -30,7 +30,4 @@
             {!$Label.c.ZK_NoResults}
         </ui:message>
     </aura:if>
-
-
-
 </aura:component>

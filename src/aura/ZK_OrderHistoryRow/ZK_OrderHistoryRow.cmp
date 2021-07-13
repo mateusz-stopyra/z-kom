@@ -1,0 +1,41 @@
+<aura:component description="ZK_OrderHistoryRow">
+
+    <aura:attribute name="orderRow" type="Object" required="true"/>
+
+    <div>
+        <div class="slds-grid slds-grid_vertical-align-start">
+            <div>
+                <h2 class="slds-text-heading_medium">
+                    <p>Order Number: &nbsp;{!v.orderRow.order.OrderNumber}</p>
+                </h2>
+                <h3 class="slds-text-heading_small slds-m-top_x-small"> Status: {!v.orderRow.order.Status}
+                </h3>
+                <h3 class="slds-text-heading_small slds-m-top_x-small">
+                Date: <lightning:formattedDateTime value="{!v.orderRow.order.EffectiveDate}"/>
+                </h3>
+
+            </div>
+            <div class="slds-col_bump-left slds-m-top_large">
+            <lightning:button
+                              variant="neutral"
+                              onclick="{!c.createCase}"
+                              label="Have a Question?"/></div>
+        </div>
+        <div>
+            <aura:iteration items="{!v.orderRow.order.OrderItems}" var="item">
+                <c:ZK_OrderHistoryProductRow orderProduct="{!item}"/>
+            </aura:iteration>
+        </div>
+        <div class="slds-m-top_medium slds-grid slds-grid_vertical-align-center">
+            <div class="slds-text-heading_small slds-size_9-of-12">
+            </div>
+            <div>
+            <h2 class="slds-text-heading_small"> Total Amount </h2>
+                <h2 class="slds-text-heading_small">
+                    <lightning:formattedNumber style="currency" value="{!v.orderRow.order.TotalAmount}"/>
+                </h2>
+            </div>
+        </div>
+    </div>
+
+</aura:component>

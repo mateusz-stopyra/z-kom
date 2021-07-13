@@ -10,7 +10,4 @@
         const mediaSearchResultsCmp = component.find('mediaSearchResultsCmp');
         helper.handleGearSubmit(component,searchQuery,mediaSearchResultsCmp);
     },
-
-
-
 })

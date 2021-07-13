@@ -1,0 +1,40 @@
+<aura:component description="ZK_OrderHistoryProductRow">
+
+    <aura:attribute name="orderProduct" type="Object" required="true"/>
+    <aura:attribute name="image" type="String"/>
+
+    <div class="slds-grid slds-grid_vertical-align-center slds-m-top_x-small">
+
+        <div class="slds-grid slds-grid_vertical-align-center slds-size_5-of-12">
+            <div style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + v.orderProduct.Product2.Display_Image__c + '\'); width: 100px; height: 100px;'}"
+                 class="bg-image slds-m-right_small">
+            </div>
+
+            <a data-value="{!v.orderProduct.Product2.Id}" onclick="{!c.goToProduct}">
+            <h3 class="slds-text-heading_small">
+                    {!v.orderProduct.Product2.Name} </h3></a>
+        </div>
+
+        <div class="slds-text-heading_small slds-size_2-of-12">
+            Detail Price
+            <p class="">
+                <lightning:formattedNumber style="currency" value="{!v.orderProduct.UnitPrice}"/>
+            </p>
+        </div>
+        <div class="slds-text-heading_small slds-size_2-of-12">
+            Quantity
+            <p class="slds-m-left_large">
+                    {!v.orderProduct.Quantity}
+            </p>
+        </div>
+
+        <div class="slds-text-heading_small slds-size_2-of-12">
+            Total Price
+            <p>
+                <lightning:formattedNumber style="currency" value="{!v.orderProduct.Quantity * v.orderProduct.UnitPrice}"/>
+            </p>
+        </div>
+
+    </div>
+
+</aura:component>
