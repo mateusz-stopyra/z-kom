@@ -19,3 +19,7 @@
     right: 0;
     z-index: 1000000;
 }
+
+.THIS .black svg{
+    fill: black  !important;
+}

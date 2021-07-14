@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:searchInterface" controller="ZK_ProductController">
+
+    <aura:attribute name="searchQuery" type="String"/>
+
+    <aura:registerEvent name="formSubmit" type="c:ZK_FormSubmit"/>
+
+    <lightning:layout horizontalAlign="center" verticalAlign="end">
+        <lightning:layoutItem padding="around-small" size="3">
+            <lightning:input aura:id="queryInputField"
+                             label="Search"
+                             type="text"
+                             variant="label-hidden"
+                             value="{!v.searchQuery}"
+                             placeholder="{!$Label.c.ZK_TellUs}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small">
+            <lightning:button variant="brand" label="{!$Label.c.DS_SearchButton}" onclick="{!c.onFormSubmit}"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+</aura:component>
