@@ -34,10 +34,5 @@
             "message": "Product has been saved successfully."
         });
         toastEvent.fire();
-
-
     }
-
-
-
 })

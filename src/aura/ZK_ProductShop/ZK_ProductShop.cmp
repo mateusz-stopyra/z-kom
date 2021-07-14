@@ -6,13 +6,6 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
-<!--    <aura:if isTrue="{!v.userProfile.Name == 'Custom Customer Community User' || v.userProfile.Name == 'System Administrator'}">-->
-<!--        <div class="FindMovie">-->
-<!--        <lightning:card title="Shopping Cart">-->
-<!--            <c:ZK_ProductShopNav/>-->
-<!--        </lightning:card>-->
-<!--        </div>-->
-<!--    </aura:if>-->
     <div class="slds-m-top_medium" >
         <c:ZK_ProductSearch destination="{!v.userProfile.Name != 'z-kom Profile' ? 'client' : 'guest'}" size="small"/>
     </div>

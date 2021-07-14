@@ -6,8 +6,6 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
-
-
     <fieldset class="slds-form-element slds-align_absolute-center" >
         <div class="slds-form-element__control ">
             <aura:iteration items="{!v.images}" var="image">
@@ -29,6 +27,4 @@
             </aura:iteration>
         </div>
     </fieldset>
-
-
 </aura:component>

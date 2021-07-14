@@ -14,27 +14,23 @@
             <h3 class="slds-text-heading_small">
                     {!v.orderProduct.Product2.Name} </h3></a>
         </div>
-
         <div class="slds-text-heading_small slds-size_2-of-12">
-            Detail Price
+            {!$Label.c.Manufacturer}
             <p class="">
                 <lightning:formattedNumber style="currency" value="{!v.orderProduct.UnitPrice}"/>
             </p>
         </div>
         <div class="slds-text-heading_small slds-size_2-of-12">
-            Quantity
+            {!$Label.c.ZK_Quantity}
             <p class="slds-m-left_large">
                     {!v.orderProduct.Quantity}
             </p>
         </div>
-
         <div class="slds-text-heading_small slds-size_2-of-12">
-            Total Price
+            {!$Label.c.ZK_TotalPrice}
             <p>
                 <lightning:formattedNumber style="currency" value="{!v.orderProduct.Quantity * v.orderProduct.UnitPrice}"/>
             </p>
         </div>
-
     </div>
-
 </aura:component>

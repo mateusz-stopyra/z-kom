@@ -20,15 +20,15 @@
     <lightning:card>
     <lightning:layout>
         <lightning:layoutItem padding="around-medium">
-            <lightning:card title="Billing Address">
+            <lightning:card title="{!$Label.c.ZK_BillingAddress}">
                 <lightning:inputAddress
                         aura:id="address"
-                        streetLabel="Street"
-                        cityLabel="City"
-                        countryLabel="Country"
+                        streetLabel="{!$Label.c.ZK_Street}"
+                        cityLabel="{!$Label.c.ZK_City}"
+                        countryLabel="{!$Label.c.ZK_Country}"
                         province="{!v.addressProvince}"
-                        postalCodeLabel="PostalCode"
-                        provinceLabel="State"
+                        postalCodeLabel="{!$Label.c.ZK_PostalCode}"
+                        provinceLabel="{!$Label.c.ZK_State}"
                         street="{!v.addressStreet}"
                         city="{!v.addressCity}"
                         country="{!v.addressCountry}"
@@ -39,15 +39,15 @@
         </lightning:layoutItem>
         <aura:if isTrue="{!v.showDeliveryAddress}">
             <lightning:layoutItem padding="around-medium">
-                <lightning:card title="Delivery Address">
+                <lightning:card title="{!$Label.c.ZK_DeliveryAddress}">
                     <lightning:inputAddress
                             aura:id="deliveryAddress"
-                            streetLabel="Street"
-                            cityLabel="City"
+                            streetLabel="{!$Label.c.ZK_Street}"
+                            cityLabel="{!$Label.c.ZK_City}"
                             province="{!v.addressDeliveryProvince}"
-                            countryLabel="Country"
-                            provinceLabel="State"
-                            postalCodeLabel="PostalCode"
+                            countryLabel="{!$Label.c.ZK_Country}"
+                            provinceLabel="{!$Label.c.ZK_State}"
+                            postalCodeLabel="{!$Label.c.ZK_PostalCode}"
                             street="{!v.addressDeliveryStreet}"
                             city="{!v.addressDeliveryCity}"
                             country="{!v.addressDeliveryCountry}"
@@ -57,8 +57,8 @@
             </lightning:layoutItem>
         </aura:if>
         <lightning:layoutItem padding="around-medium">
-        <lightning:card title="Payment Method">
-            <lightning:select value="{!v.paymentMethod}" label="Choose Payment method">
+        <lightning:card title="{!$Label.c.ZK_PaymentMethod}">
+            <lightning:select value="{!v.paymentMethod}" label="{!$Label.c.Choose_Payment_method}">
                 <option value="Credit Card">Credit Card</option>
                 <option value="Bank Transfer">Bank Transfer</option>
                 <option value="Cash on delivery">Cash on delivery</option>
@@ -69,9 +69,9 @@
     </lightning:layout>
         <div class="slds-grid slds-m-right_large slds-m-bottom_large">
             <div class="slds-col_bump-left">
-                <lightning:button aura:id="BACK" label="Previous"
-                                  variant="neutral" onclick="{!c.onButtonPressed}"/>
-                <lightning:button class="slds-m-left_large" aura:id="NEXT" label="Proceed to delivery"
+<!--                <lightning:button aura:id="BACK" label="Previous"-->
+<!--                                  variant="neutral" onclick="{!c.onButtonPressed}"/>-->
+                <lightning:button class="slds-m-left_large" aura:id="NEXT" label="{!$Label.c.ZK_ProceedToDelivery}"
                                   variant="brand" onclick="{!c.onButtonPressed}"/>
             </div>
         </div>

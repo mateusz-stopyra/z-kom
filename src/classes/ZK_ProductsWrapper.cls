@@ -6,5 +6,4 @@ public with sharing class ZK_ProductsWrapper {
     @AuraEnabled public Decimal unitPrice { get; set; }
     @AuraEnabled public Decimal amount { get; set; }
 
-
 }

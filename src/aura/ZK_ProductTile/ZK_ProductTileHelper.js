@@ -13,15 +13,11 @@
     fetchCurrentProfile: function(component) {
         const action = component.get('c.getCurrentProfile');
         action.setCallback(this, function (res) {
-
             const state = res.getState();
-
             if (state === 'SUCCESS') {
                 component.set('v.currentProfile', res.getReturnValue());
             }
-
         });
-
         $A.enqueueAction(action);
     },
 
@@ -34,7 +30,7 @@
             const state = response.getState();
             if(state==='SUCCESS'){
                 const temp=response.getReturnValue();
-                component.set('v.price',temp[0].UnitPrice); //biore ostatnią cene
+                component.set('v.price',temp[0].UnitPrice);
                 if (temp.length > 1) {
                     component.set('v.defaultPrice', temp[temp.length - 1].UnitPrice);
                 }

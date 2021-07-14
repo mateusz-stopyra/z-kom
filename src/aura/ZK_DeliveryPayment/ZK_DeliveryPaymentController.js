@@ -4,11 +4,8 @@
     },
 
     onButtonPressed: function(cmp, event, helper) {
-        // Figure out which action was called
-        var actionClicked = event.getSource().getLocalId();
-        // Fire that action
-        var navigate = cmp.get('v.navigateFlow');
+        let actionClicked = event.getSource().getLocalId();
+        let navigate = cmp.get('v.navigateFlow');
         navigate(actionClicked);
-        // helper.assignData(component, event);
     }
 })

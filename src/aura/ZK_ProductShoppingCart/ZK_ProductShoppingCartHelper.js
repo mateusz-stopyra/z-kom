@@ -121,8 +121,4 @@
         component.set('v.cartSize',0);
 
     }
-
-
-
-
 })

@@ -23,5 +23,4 @@ public with sharing class ZK_ProductReviewsController {
         Decimal average = (Decimal) res[0].get('expr0');
         return Integer.valueOf(average.round());
     }
-
 }

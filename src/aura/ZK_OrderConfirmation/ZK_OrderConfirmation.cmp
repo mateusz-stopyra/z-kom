@@ -13,7 +13,6 @@
     <aura:attribute name="addressDeliveryProvince" type="String"/>
     <aura:attribute name="addressProvince" type="String"/>
     <aura:attribute name="paymentMethod" type="String"/>
-
     <aura:attribute name="opportunityId" type="String"/>
     <aura:attribute name="orderId" type="String"/>
     <aura:attribute name="products" type="OpportunityLineItem[]"/>
@@ -23,34 +22,33 @@
 
     <aura:registerEvent name="clearBasket" type="c:ZK_ClearBasket"/>
 
-
     <lightning:card>
         <lightning:layout>
             <lightning:layoutItem padding="around-medium">
-                <lightning:card title="Billing Address">
-                    <p class="slds-m-top_large">Street:&nbsp; <span class="slds-text-title_bold">{!v.addressStreet}</span></p>
-                    <p>Postal Code:&nbsp; <span class="slds-text-title_bold"> {!v.addressPostalCode}</span></p>
-                    <p>Province:&nbsp; <span class="slds-text-title_bold"> {!v.addressProvince}</span></p>
-                    <p>City:&nbsp; <span class="slds-text-title_bold"> {!v.addressCity}</span></p>
-                    <p>Country:&nbsp; <span class="slds-text-title_bold"> {!v.addressCountry}</span></p>
+                <lightning:card title="{!$Label.c.ZK_BillingAddress}">
+                    <p class="slds-m-top_large">{!$Label.c.ZK_Street}:&nbsp; <span class="slds-text-title_bold">{!v.addressStreet}</span></p>
+                    <p>{!$Label.c.ZK_PostalCode}:&nbsp; <span class="slds-text-title_bold"> {!v.addressPostalCode}</span></p>
+                    <p>{!$Label.c.ZK_State}:&nbsp; <span class="slds-text-title_bold"> {!v.addressProvince}</span></p>
+                    <p>{!$Label.c.ZK_City}:&nbsp; <span class="slds-text-title_bold"> {!v.addressCity}</span></p>
+                    <p>{!$Label.c.ZK_Country}:&nbsp; <span class="slds-text-title_bold"> {!v.addressCountry}</span></p>
                 </lightning:card>
             </lightning:layoutItem>
             <lightning:layoutItem padding="around-medium">
-                <lightning:card title="Delivery Address">
-                    <p class="slds-m-top_large">Street:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryStreet}</span></p>
-                    <p>Postal code:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryPostalCode}</span></p>
-                    <p>Province:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryProvince}</span></p>
-                    <p>City:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryCity}</span></p>
-                    <p>Country: &nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryCountry}</span></p>
+                <lightning:card title="{!$Label.c.ZK_DeliveryAddress}">
+                    <p class="slds-m-top_large">{!$Label.c.ZK_Street}:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryStreet}</span></p>
+                    <p>{!$Label.c.ZK_PostalCode}:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryPostalCode}</span></p>
+                    <p>{!$Label.c.ZK_State}:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryProvince}</span></p>
+                    <p>{!$Label.c.ZK_City}:&nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryCity}</span></p>
+                    <p>{!$Label.c.ZK_Country}: &nbsp; <span class="slds-text-title_bold">{!v.addressDeliveryCountry}</span></p>
                 </lightning:card>
             </lightning:layoutItem>
             <lightning:layoutItem padding="around-medium">
-                <lightning:card title="Payment Method">
+                <lightning:card title="{!$Label.c.ZK_PaymentMethod}">
                     <p class="slds-text-title_bold slds-m-top_large">{!v.paymentMethod}</p>
                 </lightning:card>
             </lightning:layoutItem>
             <lightning:layoutItem padding="around-medium">
-                <lightning:card title="Products Ordered" >
+                <lightning:card title="{!$Label.c.ZK_ProductsOrdered}" >
                 <aura:iteration items="{!v.products}" var="product">
                     <div class="slds-grid slds-grid_vertical-align-center" style="width: 450px">
                         <div style="{!'background-image: url(\'/sfc/servlet.shepherd/document/download/' + product.Product2.Display_Image__c + '\''}"
@@ -78,12 +76,11 @@
         </lightning:layout>
         <div class="slds-grid slds-m-right_large slds-m-bottom_large">
             <div class="slds-col_bump-left">
-                <lightning:button aura:id="BACK" label="Previous"
-                                  variant="neutral" onclick="{!c.onButtonPressed}"/>
-                <lightning:button class="slds-m-left_large" aura:id="NEXT" label="Confirm Order"
+<!--                <lightning:button aura:id="BACK" label="Previous"-->
+<!--                                  variant="neutral" onclick="{!c.onButtonPressed}"/>-->
+                <lightning:button class="slds-m-left_large" aura:id="NEXT" label="{!$Label.c.ZK_ConfirmOrder}"
                                   variant="brand" onclick="{!c.onButtonPressed}"/>
             </div>
         </div>
     </lightning:card>
-
 </aura:component>

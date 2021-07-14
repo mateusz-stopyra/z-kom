@@ -10,9 +10,6 @@
     <design:attribute name="addressDeliveryProvince" description="address delivery province" />
     <design:attribute name="addressProvince" description="address province" />
     <design:attribute name="paymentMethod" />
-
     <design:attribute name="orderId" />
     <design:attribute name="opportunityId" />
-
-
 </design:component>

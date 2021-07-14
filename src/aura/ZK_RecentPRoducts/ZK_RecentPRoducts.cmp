@@ -5,7 +5,8 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
     <div>
-        <h2 class="slds-text-heading_small slds-text-align_center">Recent Products</h2>
+        <h2 class="slds-text-heading_small slds-text-align_center">{!$Label.c.ZK_RecentProducts}</h2>
+        <br></br>
         <div class="slds-grid slds-gutters slds-wrap">
             <aura:iteration items="{!v.products}" var="result">
                     <c:ZK_ProductTile product="{!result}"/>

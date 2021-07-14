@@ -14,11 +14,7 @@ public with sharing class ZK_OrderHistoryController {
     public static List<OrderHistoryData> getOrderHistory() {
         String userId = UserInfo.getUserId();
         List<Order> orders = [SELECT OrderNumber, EffectiveDate, Status, TotalAmount,
-                (SELECT Product2.Id, Quantity, Product2.Name, UnitPrice, Product2.Display_Image__c FROM OrderItems)
-                FROM Order
-                WHERE OwnerId = :userId
-                ORDER BY OrderNumber DESC
-        ];
+                (SELECT Product2.Id, Quantity, Product2.Name, UnitPrice, Product2.Display_Image__c FROM OrderItems) FROM Order WHERE OwnerId = :userId ORDER BY OrderNumber DESC];
 
         List<ContentDocumentLink> links = getProductsImages(orders);
 
@@ -36,7 +32,6 @@ public with sharing class ZK_OrderHistoryController {
             pos.orderedItems = products;
             orderHistory.add(pos);
         }
-        System.debug(orderHistory);
         return orderHistory;
     }
 
@@ -69,7 +64,4 @@ public with sharing class ZK_OrderHistoryController {
         }
         return ids;
     }
-
-
-
 }

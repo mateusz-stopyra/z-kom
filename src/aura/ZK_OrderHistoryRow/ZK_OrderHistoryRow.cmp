@@ -19,7 +19,7 @@
             <lightning:button
                               variant="neutral"
                               onclick="{!c.createCase}"
-                              label="Have a Question?"/></div>
+                              label="{!$Label.c.ZK_HaveAQuestion}"/></div>
         </div>
         <div>
             <aura:iteration items="{!v.orderRow.order.OrderItems}" var="item">
@@ -30,7 +30,7 @@
             <div class="slds-text-heading_small slds-size_9-of-12">
             </div>
             <div>
-            <h2 class="slds-text-heading_small"> Total Amount </h2>
+            <h2 class="slds-text-heading_small"> {!$Label.c.ZK_TotalAmount} </h2>
                 <h2 class="slds-text-heading_small">
                     <lightning:formattedNumber style="currency" value="{!v.orderRow.order.TotalAmount}"/>
                 </h2>

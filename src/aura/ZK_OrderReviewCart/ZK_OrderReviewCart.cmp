@@ -39,7 +39,7 @@
             </aura:iteration>
             <div class="slds-m-top_medium slds-grid slds-m-left_large">
                 <div>
-                    <h2 class="slds-text-heading_small">Total price</h2>
+                    <h2 class="slds-text-heading_small">{!$Label.c.ZK_TotalPrice}</h2>
                     <p class="slds-text-heading_small">
                         <lightning:formattedNumber value="{!v.totalPrice}" style="currency"/>
                     </p>
@@ -47,7 +47,7 @@
             </div>
             <div class="slds-grid slds-m-right_large slds-m-bottom_large">
                 <div class="slds-col_bump-left">
-                    <lightning:button class="slds-m-left_large" aura:id="NEXT" label="Proceed to delivery"
+                    <lightning:button class="slds-m-left_large" aura:id="NEXT" label="{!$Label.c.ZK_ProceedToDelivery}"
                                       variant="brand" onclick="{!c.onButtonPressed}"/>
                 </div>
             </div>
@@ -56,7 +56,7 @@
     </aura:if>
     <aura:if isTrue="{!or(v.products.length == 0, v.products == null)}">
         <div class="slds-card slds-text-align_center slds-text-heading_medium">
-            <p class="slds-m-top_large slds-m-bottom_large">Your basket is empty.</p>
+            <p class="slds-m-top_large slds-m-bottom_large">{!$Label.c.ZK_EmptyBasket}</p>
         </div>
     </aura:if>
 </aura:component>

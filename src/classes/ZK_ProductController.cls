@@ -60,8 +60,6 @@ public with sharing class ZK_ProductController {
         return products;
     }
 
-
-
     @AuraEnabled
     public static List<Product2> getGearTypeSearchResults(String searchQuery){
         List<String> searchResultsList = new List<String>();
@@ -101,7 +99,4 @@ public with sharing class ZK_ProductController {
     public static Boolean deleteProduct(Id id){
         return Database.delete(id).success;
     }
-
-
-
 }

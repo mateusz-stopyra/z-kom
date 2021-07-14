@@ -44,12 +44,7 @@
                 const products = component.get('v.products');
                 console.log(products);
                 for (let p of products) {
-                    // const product = products[p];
-                    console.log(p);
-                    console.log(p.Amount);
-                    console.log(p.UnitPrice);
                     totalPrice += p.Amount * p.UnitPrice;
-                    console.log(totalPrice);
                 }
                 component.set('v.totalPrice', totalPrice);
                 console.log(component.get('v.totalPrice'));

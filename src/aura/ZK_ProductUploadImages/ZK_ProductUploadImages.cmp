@@ -5,7 +5,6 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
-
     <div class="slds-grid_vertical">
         <div>
             <lightning:fileUpload label="{!$Label.c.ZK_UploadImages}"

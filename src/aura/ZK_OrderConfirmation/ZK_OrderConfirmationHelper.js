@@ -12,7 +12,6 @@
                 const products = component.get('v.products');
                 for (let p of products) {
                     totalPrice += p.Quantity * p.UnitPrice;
-                    console.log(p.image);
                 }
                 component.set('v.totalPrice', totalPrice);
             }

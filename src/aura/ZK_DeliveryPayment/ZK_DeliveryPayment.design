@@ -12,5 +12,4 @@
     <design:attribute name="paymentMethod" />
     <design:attribute name="firstName" />
     <design:attribute name="lastName" />
-
 </design:component>
