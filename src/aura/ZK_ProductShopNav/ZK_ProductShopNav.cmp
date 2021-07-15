@@ -9,6 +9,8 @@
     <aura:handler event="c:ZK_ProductShopped" action="{!c.onProductShopped}"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
+    <c:ZK_ErrorHandler aura:id="toastErrorHandler" />
+
     <div class="slds-is-fixed floating-cart slds-m-top_medium">
         <div class="slds-size_1-of-1 slds-is-relative">
             <c:ZK_ProductShoppingCart aura:id="productCart"

@@ -10,7 +10,7 @@
     <aura:handler name="gearSelect" event="c:ZK_GearSelect" action="{!c.onGearSubmit}"/>
 
     <div class="FindMovie">
-        <lightning:card title="{!$Label.c.ZK_SearchBar}">
+        <lightning:card title="{!$Label.c.ZK_SearchCategories}">
             <c:ZK_ProductSearchForm/>
         </lightning:card>
     </div>

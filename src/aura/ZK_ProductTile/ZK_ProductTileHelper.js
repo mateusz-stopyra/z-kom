@@ -26,17 +26,37 @@
         action.setParams({
             'productId' : component.get('v.product.Id')
         });
-        action.setCallback(this,function(response) {
-            const state = response.getState();
-            if(state==='SUCCESS'){
+        let toastErrorHandler = component.find('toastErrorHandler');
+        action.setCallback(this,function(response){
+            toastErrorHandler.handleResponse(
+                response,
+                function(response){
                 const temp=response.getReturnValue();
                 component.set('v.price',temp[0].UnitPrice);
                 if (temp.length > 1) {
                     component.set('v.defaultPrice', temp[temp.length - 1].UnitPrice);
                 }
-            }
+            })
         });
         $A.enqueueAction(action);
     },
+
+    handleProductShop : function (component, event) {
+        const product = component.get('v.product');
+
+        component.set('v.image', '/sfc/servlet.shepherd/document/download/' + product.Display_Image__c);
+        component.set('v.unitPrice', product.PricebookEntries[0].UnitPrice);
+
+        const image = component.get('v.image');
+        const price = component.get('v.price');
+
+        const productShopped = $A.get('e.c:ZK_ProductShopped');
+        productShopped.setParams({
+            product: product,
+            image: image,
+            unitPrice: price
+        });
+        productShopped.fire();
+    }
 
 })

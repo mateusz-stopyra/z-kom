@@ -27,24 +27,24 @@
         action.setParams({
             cart: products
         });
-        action.setCallback(this, res => {
-            const state = res.getState();
-            if (state === 'SUCCESS') {
+
+        let toastErrorHandler = component.find('toastErrorHandler');
+
+        action.setCallback(this, function(response){
+            toastErrorHandler.handleResponse(
+                response,
+                function(response){
                 component.set('v.productsInCart', products);
                 component.set('v.cartSize', cartSize+1);
                 productCart.recalculateTotalPrice();
                 const toastEvent = $A.get("e.force:showToast");
                 toastEvent.setParams({
                     title: 'Item added',
-                    message: 'You have successfully added item to your shopping cart. ',
+                    message: 'You have added item to your shopping cart. ',
                     type: 'success'
                 });
                 toastEvent.fire();
-            }
-            else {
-                console.log(state);
-                console.log(res.getError());
-            }
+            })
         });
         $A.enqueueAction(action);
     },

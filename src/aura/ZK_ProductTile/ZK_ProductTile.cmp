@@ -11,6 +11,8 @@
     <aura:attribute name="currentProfile" type="Object"/>
     <aura:attribute name="defaultPrice" type="Integer"/>
 
+    <c:ZK_ErrorHandler aura:id="toastErrorHandler" />
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
     <aura:registerEvent name="ZK_ProductShopped" type="c:ZK_ProductShopped"/>

@@ -5,21 +5,7 @@
         },
 
     onProductShop: function (component, event, helper) {
-        const product = component.get('v.product');
-
-        component.set('v.image', '/sfc/servlet.shepherd/document/download/' + product.Display_Image__c);
-        component.set('v.unitPrice', product.PricebookEntries[0].UnitPrice);
-
-        const image = component.get('v.image');
-        const price = component.get('v.price');
-
-        const productShopped = $A.get('e.c:ZK_ProductShopped');
-        productShopped.setParams({
-            product: product,
-            image: image,
-            unitPrice: price
-        });
-        productShopped.fire();
+        helper.handleProductShop(component, event);
     },
 
     doInit: function(component, event, helper) {

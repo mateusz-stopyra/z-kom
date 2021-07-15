@@ -11,6 +11,8 @@
 
     <aura:handler event="c:ZK_ClearBasket" action="{!c.clearBasket}"/>
 
+    <c:ZK_ErrorHandler aura:id="toastErrorHandler" />
+
     <aura:method name="recalculateTotalPrice" action="{!c.recalculateTotalPrice}"/>
 
     <aura:if isTrue="{!v.cartVisible}">

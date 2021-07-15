@@ -56,6 +56,8 @@
             action.setParams({
                 cart: products
             });
+
+            let toastErrorHandler = component.find('toastErrorHandler');
             action.setCallback(this, res => {
                 const state = res.getState();
                 if (state === 'SUCCESS') {
@@ -70,7 +72,7 @@
                     toastEvent.setParams({
                         title: 'Product removed',
                         message: 'Product has been removed from your shopping cart. ',
-                        type: 'error'
+                        type: 'success'
                     });
                     toastEvent.fire();
                 }
